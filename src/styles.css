@@ -15,3 +15,7 @@ app-register-fan-id{
 .control-label,.input-file{
     color:white;
 }
+
+a{
+    cursor: pointer; 
+}

@@ -8,9 +8,30 @@
                       <div class="center">
                               <a  routerLink = "registerFanId" class="wow fadeInUp smoothScroll btn btn-default section-btn" data-wow-delay="1s">Get my <strong>FAN ID</strong></a>
                       </div>
-                      
+                      <p class="wow fadeInUp white-color" data-wow-delay="1.2s">Already have a FAN ID? sign in now</p>
+                      <div class="center">
+                        <a class="wow fadeInUp btn btn-default section-btn" (click)="openLoginDialog()" data-wow-delay="1.4s">Sign in</a>
+                      </div>
                  </div>
             </div>
 
        </div>
+       <p-dialog header="Login" [(visible)]="showLoginDialog" draggable="false" resizable="false" modal="true">
+          <p-messages [(value)]="errors"></p-messages>
+          <div class="center">
+              <div class="ui-inputgroup">
+                  <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                  <input type="text" pInputText name="username" [(ngModel)]="username" placeholder="Username">         
+                </div>
+                <br>
+                <div class="ui-inputgroup">
+                  <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
+                  <input type="password" pInputText name="password" [(ngModel)]="password"  placeholder="Password">         
+                </div>
+                <br>
+                
+                <p-button label="Login" (click)="login()"></p-button>
+          </div>
+          
+       </p-dialog>
   </div>
