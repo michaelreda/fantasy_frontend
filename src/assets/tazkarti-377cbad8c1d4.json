@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "tazkarti",
+  "private_key_id": "377cbad8c1d471ab48535a78b220b29d827de728",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDZ2xZRcTIBB1HL\nYjcycIhe3XRghZQ59CLDHZDLosne4/Z5tlweic7igaPAXaVmXVAJGc3ju5c0IA67\n5FmPyrOKn3Et1AuKMdk0HEl66glvUat9dvWOJH4YiQFEN0OqE3CCTZbAIgXik5lm\nn8Po2G4b8pvKQCjYD/M4ivT5hkatJrQiyaphzgUYbh9h5l3V+LFXlBOGqvMvBxG8\nzVnxNuQ6XLIatn20IGIKQEtAbLRtx4EpjMcFyy8ZJhpGPgQCmoYqizWoXVP/sNym\nNi7Gdfh3a5JGBR4T6kK21csXAgbfvs6jiIVROuaJZUdrKzb6QikVZEmkZx7UgEM4\nNLKxyJLDAgMBAAECggEACj9y5yWEJ3s7fu3hpdGYVfS53uPPC1jaHRkyG095ioQT\nrzmuT1DGjBjIEKpMYlUns33kwFPYiCmtN8Eam20lZp3FxP+cBAYAmcxuLRt+58nM\n34Et34qvlHeMDomWTmpNWREi8xUb921frRhShAymRVHzanSmgd9iNA8z+Ibh9+QW\nHhv+f4a/A7VUhLSNxDz6BV44ZCjcsJK1onm1fkvK+dCxsvMibKMDPHldfuaS/QKj\nv8qEsZxbgo7CX/hcQFBx1k2YYQGwtZ3nnt8oA3SlGY5Ow6Bfx4BnJMZVJg0Kgv0j\nfZauaZd02zI8S4OOYMNhwG50sX/uxmcWfqo/RTJDvQKBgQD23Gn0qT/82LVUhR8Y\nIHRUCNHR9mjFvekKoadhj3WxCdnlr0pbmlzr6xCQgvDMIT0qa9QwrfvhBYMCTuLN\nqOTc40MVoxR8WpqMc/6B21qC4Ki1sL/lbnbewyq01ovRljXS/GxwLOxlLaKRHJTN\nntrDxBsXyFyIB3/CMhOByRJX7wKBgQDh68f/8Y5AEdrZDzSnHnXE9IBen7JkPXl3\nPKP1h8b9fq3v1pmYMHr2uZeBQQrCl3I1NltObtz0gsAmSRcSsp2p75/Qh1H5A/cc\nofsX1mrCJj+957RLtuNRJGpAo8pEgkRWggSRdV10+QSQYNdUnKbyvLWQ6rqjyFlo\nSNiwL+b+bQKBgQCHY1U9GMH+Q0AX7bai/dGu8PNaSuElakVwTj5FdG+gu/1kSeHn\nIV7LCK2aBCZaXfR02pSSailVPTefwXIERxfVyVJWgI1QskRGuasgvxQB6YK9uwVT\nqGTLQZCfg3dFaDN21ngGgazYxNF+8oTtzKzAZ0JQpdORy0MXV215ZbSIwwKBgQC1\n11/9hGIo87Yg6/pHYV8NjnccspGV2V1BOhAGeqkSNLqvxx2Nv8fZevyVTtLoWZnV\ndtD7SoSSUgNzTXVC2X3J4FPUNncmZaiq5T4Dq9P2PW8k3bDjGGvTTeov6SXPCsMS\nlkgzBDKbCixAQZJQSl6eFoJWCHj9hy9fnvK6rXPR6QKBgQCFUSk0L360pdZNMkIw\nSlFVXW5T1PSeEeNXcSat0NUb7HbxYBscJUEj4nJPK+YDGKLq38TVf4Zr2xz2JwoL\nvZwBszUFvZqOuaJqCWaoC/sKw54f+jISI+0tv6bhlaUjSdUomNxbSAb6N6p9S+bI\ncOCKW0j+gbbsAfEzwodhvW6Sjw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "tazkarti-angular@tazkarti.iam.gserviceaccount.com",
+  "client_id": "111289215860397790880",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tazkarti-angular%40tazkarti.iam.gserviceaccount.com"
+}

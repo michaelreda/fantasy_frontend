@@ -1,0 +1,14 @@
+
+
+.form-container{
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #3f3f3f7a;
+}
+
+fieldset{
+    width: 50%;
+    margin: 0 auto;
+    border-width: 0;
+}
