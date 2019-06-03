@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../authentication.service';
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
@@ -14,7 +15,7 @@ export class RegisterFanIDComponent implements OnInit {
   password2: String;
   class: String = "0";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private authenticationService:AuthenticationService) {}
 
   ngOnInit() {}
 
@@ -43,6 +44,9 @@ export class RegisterFanIDComponent implements OnInit {
         },{responseType:"text"})
         .subscribe(data => {
           console.log(data);
+          if(data["JWT"]){
+            this.authenticationService.saveToken(data["JWT"]);
+          }
         });
       // this.http.post("https://api.mlab.com/api/1/databases/tazkarti/collections/users?apiKey=NfAwNomQ8kZmlVKuFU8Vx6ShVIgZLy_P",{
       //     name:this.name,

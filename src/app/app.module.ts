@@ -1,3 +1,5 @@
+import { JWTInterceptor } from './utils/JWTInterceptor';
+import { AuthenticationService } from './authentication.service';
 import { BaseUrlInterceptor } from './utils/httpBaseUrlInterceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -46,7 +48,11 @@ import { LandingComponent } from './landing/landing.component';
    MessagesModule,
    MessageModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
+    AuthenticationService,
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
