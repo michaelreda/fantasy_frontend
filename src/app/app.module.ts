@@ -19,13 +19,16 @@ import {MessageModule} from 'primeng/message';
 import { AppComponent } from './app.component';
 import { RegisterFanIDComponent } from './register-fan-id/register-fan-id.component';
 import { LandingComponent } from './landing/landing.component';
+import { HomeComponent } from './home/home.component';
+import { RoutesAuthenticationGuardService } from './routes-authentication-guard.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterFanIDComponent,
-    LandingComponent
+    LandingComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,11 @@ import { LandingComponent } from './landing/landing.component';
       {
          path: 'registerFanId',
          component: RegisterFanIDComponent
+      },
+      {
+        path: 'home',
+        component: HomeComponent,
+        canActivate: [RoutesAuthenticationGuardService]
       }
    ]),
    DialogModule,
@@ -52,6 +60,7 @@ import { LandingComponent } from './landing/landing.component';
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
     AuthenticationService,
+    RoutesAuthenticationGuardService
     ],
   bootstrap: [AppComponent]
 })

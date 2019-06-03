@@ -2,6 +2,7 @@ import { AuthenticationService } from './../authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { forEach } from '@angular/router/src/utils/collection';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -15,7 +16,7 @@ export class LandingComponent implements OnInit {
   password="";
 
   errors=[];
-  constructor(private http: HttpClient,private authenticationService:AuthenticationService) { }
+  constructor(private http: HttpClient,private authenticationService:AuthenticationService, private router:Router) { }
 
   ngOnInit() {
   }
@@ -37,13 +38,12 @@ export class LandingComponent implements OnInit {
           }else if(res["msg"]){
             this.errors.push({severity:'error', detail:res["msg"]});
           }else if(res["JWT"]){
-            console.log("logged in");
             if(res["JWT"]){
               this.authenticationService.saveToken(res["JWT"]);
+              this.router.navigateByUrl("/home");
             }
-            this.http.get('/user').subscribe(res=>{
-              console.log(res);
-            })
+          }else{
+            this.errors.push({severity:'error', detail:"Unknown error."});
           }
         });
   }
