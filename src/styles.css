@@ -6,6 +6,7 @@
 
 .center{
     text-align: center;
+    margin: 0 auto;
 }
 app-register-fan-id{
     width: 80%;
@@ -18,4 +19,16 @@ app-register-fan-id{
 
 a{
     cursor: pointer; 
+}
+
+.stretch{
+    width:100%;
+}
+
+.no-margin{
+    margin:0px;
+}
+
+.no-padding{
+    padding:0px
 }

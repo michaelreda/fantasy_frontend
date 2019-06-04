@@ -1,6 +1,7 @@
 import { AuthenticationService } from './../authentication.service';
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import {Router} from "@angular/router"
 
 @Component({
   selector: "app-register-fan-id",
@@ -15,7 +16,11 @@ export class RegisterFanIDComponent implements OnInit {
   password2: String;
   class: String = "0";
 
-  constructor(private http: HttpClient,private authenticationService:AuthenticationService) {}
+  constructor(
+    private http: HttpClient,
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
@@ -34,18 +39,23 @@ export class RegisterFanIDComponent implements OnInit {
       alert("Please enter your class");
     } else {
       this.http
-        .post("/signup", {
-          firstName: this.firstName,
-          lastName: this.lastName,
-          username: this.username,
-          password: this.password,
-          confirmPassword: this.password2,
-          class: this.class
-        },{responseType:"text"})
+        .post(
+          "/signup",
+          {
+            firstName: this.firstName,
+            lastName: this.lastName,
+            username: this.username,
+            password: this.password,
+            confirmPassword: this.password2,
+            class: this.class
+          },
+          { responseType: "text" }
+        )
         .subscribe(data => {
           console.log(data);
-          if(data["JWT"]){
+          if (data["JWT"]) {
             this.authenticationService.saveToken(data["JWT"]);
+            this.router.navigateByUrl("/home");
           }
         });
       // this.http.post("https://api.mlab.com/api/1/databases/tazkarti/collections/users?apiKey=NfAwNomQ8kZmlVKuFU8Vx6ShVIgZLy_P",{

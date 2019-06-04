@@ -14,6 +14,8 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import {PanelModule} from 'primeng/panel';
+import {CardModule} from 'primeng/card';
 
 
 import { AppComponent } from './app.component';
@@ -21,6 +23,7 @@ import { RegisterFanIDComponent } from './register-fan-id/register-fan-id.compon
 import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 import { RoutesAuthenticationGuardService } from './routes-authentication-guard.service';
+import { PlayerComponent } from './player/player.component';
 
 
 @NgModule({
@@ -28,7 +31,8 @@ import { RoutesAuthenticationGuardService } from './routes-authentication-guard.
     AppComponent,
     RegisterFanIDComponent,
     LandingComponent,
-    HomeComponent
+    HomeComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,9 @@ import { RoutesAuthenticationGuardService } from './routes-authentication-guard.
    InputTextModule,
    ButtonModule,
    MessagesModule,
-   MessageModule
+   MessageModule,
+   PanelModule,
+   CardModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
