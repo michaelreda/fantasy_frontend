@@ -8,60 +8,7 @@
   <!-- content -->
   <!-- left pane -->
   <div class="ui-g-8">
-    <p-panel header="My Team">
-      <p-card>
-        <div class="ui-g">
-            <div class="ui-g-3 self-vertical-align-center">
-                <p-button class="stretch" label="Apply" styleClass="ui-button-success stretch"></p-button>
-            </div>
-            <div class="ui-g-3 self-vertical-align-center">
-                <p-button class="stretch" label="Cancel" styleClass="ui-button-secondry stretch"></p-button>
-            </div>
-            <div class="ui-g-3">
-                <h3 class="no-margin center">Players selected</h3>
-                <h4 class="no-margin center">0/7</h4>
-            </div>
-            <div class="ui-g-3">
-                <h3 class="no-margin center">Money remaining</h3>
-                <h4 class="no-margin center">100</h4>
-            </div>
-        </div>
-      </p-card>
-
-      <p-card>
-        <div class="Stretch pitch">
-          <div class="players center">
-              <div class="ui-g">
-                  <!-- goalkeeper -->
-                  <div class="ui-g-12">
-                      <player></player>
-                  </div>
-                  <!-- defense -->
-                  <div class="ui-g-6">
-                      <player></player>
-                  </div>
-                  <div class="ui-g-6">
-                      <player></player>
-                  </div>
-                  <!-- midfield -->
-                  <div class="ui-g-6">
-                      <player></player>
-                  </div>
-                  <div class="ui-g-6">
-                      <player></player>
-                  </div>
-                  <!-- attack -->
-                  <div class="ui-g-6">
-                      <player></player>
-                  </div>
-                  <div class="ui-g-6">
-                      <player></player>
-                  </div>
-              </div>
-          </div>
-        </div>
-      </p-card>
-    </p-panel>
+    <app-plan></app-plan>
   </div>
   <!-- right pane -->
   <div class="ui-g-4">
@@ -73,36 +20,13 @@
       </div>
       <div class="ui-g-12">
         <p>Add players to your team:</p>
-              <p-table [value]="players" [paginator]="true" [rows]="10">
-                  <ng-template pTemplate="header">
-                      <tr>
-                        <th *ngFor="let col of playersCols" [pSortableColumn]="col.field">
-                            {{col.header}}
-                            <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
-                        </th>
-                        <th>Actions</th>
-                      </tr>
-                  </ng-template>
-                  <ng-template pTemplate="body" let-player>
-                      <tr>
-                          <td>{{player.name}}</td>
-                          <td>{{player.position}}</td>
-                          <td class="center">{{player.price}}</td>
-                          <td class="center">
-                                <button pButton type="button" class="ui-button-rounded ui-button-secondary" icon="pi pi-plus"></button>
-                                <button pButton type="button" class="ui-button-rounded ui-button-secondary" icon="pi pi-info" (click)="showPlayerInfoDialog(player._id)"></button>
-                          </td>
-                      </tr>
-                  </ng-template>
-              </p-table>
-          
+        <players-table></players-table>
       </div>  
     </div>
     
   </div>
 </div>
 
-<!-- player info dialog -->
-<player-info-dialog [playerID]="selectedPlayerIDToGetHisInfo"></player-info-dialog>
+
 
 

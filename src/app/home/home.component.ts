@@ -8,29 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  selectedPlayerIDToGetHisInfo="";
+  
 
-  moneyRemaining = 100;
-  playersSelected = 0;
-
-  playersCols = [
-    { field: 'name', header: 'Player' },
-    { field: 'position', header: 'Position' },
-    { field: 'price', header: 'Price' }
-  ];
-
-
-  players;
-
-  constructor(private playersService:PlayersService) {
-    this.players = playersService.getPlayers();
+  constructor() {
    }
 
   ngOnInit() {
-  }
-
-  showPlayerInfoDialog(playerID){
-    this.selectedPlayerIDToGetHisInfo = playerID;
   }
 
 }

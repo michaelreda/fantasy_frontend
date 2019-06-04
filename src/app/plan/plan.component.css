@@ -1,0 +1,12 @@
+.pitch{
+    background-image: url("/assets/images/pitch.png");
+    background-color:#38003c;
+    height: 760px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.players{
+    width:60%;
+}

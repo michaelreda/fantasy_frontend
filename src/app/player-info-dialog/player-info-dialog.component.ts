@@ -11,8 +11,10 @@ export class PlayerInfoDialogComponent implements OnInit {
   private _player;
 
   @Input() set playerID(value:string){
-    this._player= this.playersService.getPlayerByID(value);
-    this.isDialogVisible = value.length != 0;
+    if(value){
+      this._player= this.playersService.getPlayerByID(value);
+      this.isDialogVisible = value.length != 0;
+    }
   }
 
   constructor(private playersService:PlayersService) { }

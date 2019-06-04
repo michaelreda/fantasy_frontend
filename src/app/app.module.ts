@@ -27,6 +27,8 @@ import { HomeComponent } from './home/home.component';
 import { RoutesAuthenticationGuardService } from './routes-authentication-guard.service';
 import { PlayerComponent } from './player/player.component';
 import { PlayerInfoDialogComponent } from './player-info-dialog/player-info-dialog.component';
+import { PlanComponent } from './plan/plan.component';
+import { PlayersTableComponent } from './players-table/players-table.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { PlayerInfoDialogComponent } from './player-info-dialog/player-info-dial
     LandingComponent,
     HomeComponent,
     PlayerComponent,
-    PlayerInfoDialogComponent
+    PlayerInfoDialogComponent,
+    PlanComponent,
+    PlayersTableComponent
   ],
   imports: [
     BrowserModule,
