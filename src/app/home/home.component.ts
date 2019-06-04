@@ -1,3 +1,4 @@
+import { PlayersService } from './../players.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,51 +7,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  selectedPlayerIDToGetHisInfo="";
+
   moneyRemaining = 100;
   playersSelected = 0;
 
-  players=[
-    {
-      "id":"1",
-      "name":"Michael Reda",
-      "position":"midfield",
-      "price":"30"
-    },{
-      "id":"2",
-      "name":"Samuel Wasfei",
-      "position":"goalkeeper",
-      "price":"8"
-    },{
-      "id":"3",
-      "name":"John Botros",
-      "position":"defense",
-      "price":"20"
-    },{
-      "id":"4",
-      "name":"Youssef Sherif",
-      "position":"attack",
-      "price":"35"
-    },{
-      "id":"5",
-      "name":"Mina Maher",
-      "position":"attack",
-      "price":"32"
-    },{
-      "id":"6",
-      "name":"Abanob Wageh",
-      "position":"midfield",
-      "price":"36"
-    },{
-      "id":"7",
-      "name":"Tony George",
-      "position":"defense",
-      "price":"25"
-    }
-  ]
+  playersCols = [
+    { field: 'name', header: 'Player' },
+    { field: 'position', header: 'Position' },
+    { field: 'price', header: 'Price' }
+  ];
 
-  constructor() { }
+
+  players;
+
+  constructor(private playersService:PlayersService) {
+    this.players = playersService.getPlayers();
+   }
 
   ngOnInit() {
+  }
+
+  showPlayerInfoDialog(playerID){
+    this.selectedPlayerIDToGetHisInfo = playerID;
   }
 
 }

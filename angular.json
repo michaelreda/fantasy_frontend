@@ -37,8 +37,7 @@
               "src/assets/js/jquery.magnific-popup.min.js",
               "src/assets/js/magnific-popup-options.js",
               "src/assets/js/wow.min.js",
-              "src/assets/js/custom.js",
-              "src/assets/js/Sheetsu.js"
+              "src/assets/js/custom.js"
             ]
           },
           "configurations": {

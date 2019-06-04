@@ -1,3 +1,4 @@
+import { PlayersService } from './players.service';
 import { JWTInterceptor } from './utils/JWTInterceptor';
 import { AuthenticationService } from './authentication.service';
 import { BaseUrlInterceptor } from './utils/httpBaseUrlInterceptor';
@@ -25,6 +26,7 @@ import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 import { RoutesAuthenticationGuardService } from './routes-authentication-guard.service';
 import { PlayerComponent } from './player/player.component';
+import { PlayerInfoDialogComponent } from './player-info-dialog/player-info-dialog.component';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { PlayerComponent } from './player/player.component';
     RegisterFanIDComponent,
     LandingComponent,
     HomeComponent,
-    PlayerComponent
+    PlayerComponent,
+    PlayerInfoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,8 @@ import { PlayerComponent } from './player/player.component';
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
     AuthenticationService,
-    RoutesAuthenticationGuardService
+    RoutesAuthenticationGuardService,
+    PlayersService
     ],
   bootstrap: [AppComponent]
 })
