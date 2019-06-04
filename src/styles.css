@@ -1,34 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
-.english-cont{
-    text-align: left;
-    padding-left: 50px;
+.english-cont {
+  text-align: left;
+  padding-left: 50px;
 }
 
-.center{
-    text-align: center;
-    margin: 0 auto;
-}
-app-register-fan-id{
-    width: 80%;
-    margin: 0 auto;
+.center {
+  text-align: center;
+  margin: 0 auto;
 }
 
-.control-label,.input-file{
-    color:white;
+.self-vertical-align-center {
+  -webkit-align-self: center;
+  align-self: center;
 }
 
-a{
-    cursor: pointer; 
+app-register-fan-id {
+  width: 80%;
+  margin: 0 auto;
 }
 
-.stretch{
-    width:100%;
+.control-label,
+.input-file {
+  color: white;
 }
 
-.no-margin{
-    margin:0px;
+a {
+  cursor: pointer;
 }
 
-.no-padding{
-    padding:0px
+.stretch {
+  width: 100%;
+}
+
+.no-margin {
+  margin: 0px;
+}
+
+.no-padding {
+  padding: 0px;
 }

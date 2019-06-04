@@ -16,6 +16,7 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {PanelModule} from 'primeng/panel';
 import {CardModule} from 'primeng/card';
+import {TableModule} from 'primeng/table';
 
 
 import { AppComponent } from './app.component';
@@ -60,7 +61,8 @@ import { PlayerComponent } from './player/player.component';
    MessagesModule,
    MessageModule,
    PanelModule,
-   CardModule
+   CardModule,
+   TableModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
