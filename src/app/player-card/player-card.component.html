@@ -1,4 +1,4 @@
-<div style="padding-bottom:40px;width:140px" class="center">
+<div style="padding-bottom:30px;width:140px" class="center">
   <ng-template [ngIf]="_player" [ngIfElse]="emptyPlayer">
     <div class="ui-g">
 
@@ -37,6 +37,11 @@
       height="120"
       pTooltip="Add player from the players list" tooltipPosition="top"
     />
+    <div class="center player-card-footer">
+        <div class="name">
+          {{ position }}
+        </div>
+    </div>
   </ng-template>
 </div>
 

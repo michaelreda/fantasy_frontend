@@ -11,6 +11,7 @@ import { ConfirmationService } from 'primeng/components/common/confirmationservi
 export class PlayerCardComponent implements OnInit {
   _player;
   selectedPlayerIDToGetHisInfo;
+  @Input() position;
   @Input() set playerID(value){
     if(value){
       this._player = this.playersService.getPlayerByID(value);

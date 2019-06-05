@@ -28,13 +28,13 @@
             <div class="ui-g">
                 <!-- goalkeeper -->
                 <div class="ui-g-12">
-                    <player-card [playerID]="userPlan.players.goalkeeper[0]"></player-card>
+                    <player-card [playerID]="userPlan.players.goalkeeper[0]" position="goalkeeper"></player-card>
                 </div>
 
                 <!-- Rest Of Positions -->
                 <ng-template *ngFor="let position of Object.keys(userPlan.players)" [ngIf]="position!='goalkeeper'">
                     <div class="ui-g-{{userPlan.players[position].length ==1? 12:6}}" *ngFor="let playerID of userPlan.players[position]">
-                        <player-card [playerID]="playerID"></player-card>
+                        <player-card [playerID]="playerID" [position]="position"></player-card>
                     </div>
                 </ng-template>
                 
