@@ -19,17 +19,21 @@
     </p-card>
 
     <p-card>
+      <div class="format center" style="padding-bottom:15px">
+            <h3 class="no-padding no-margin" style="color:whitesmoke">Choose your team format:</h3>
+            <p-dropdown [options]="formatOptions" [(ngModel)]="selectedFormat" (onChange)="formatChanged($event.value)"></p-dropdown>
+      </div>
       <div class="Stretch pitch">
         <div class="players center">
             <div class="ui-g">
                 <!-- goalkeeper -->
                 <div class="ui-g-12">
-                    <player-card [playerID]="userPlan.goalkeeper[0]"></player-card>
+                    <player-card [playerID]="userPlan.players.goalkeeper[0]"></player-card>
                 </div>
 
                 <!-- Rest Of Positions -->
-                <ng-template *ngFor="let position of Object.keys(userPlan)" [ngIf]="position!='goalkeeper'">
-                    <div class="ui-g-{{userPlan[position].length ==1? 12:6}}" *ngFor="let playerID of userPlan[position]">
+                <ng-template *ngFor="let position of Object.keys(userPlan.players)" [ngIf]="position!='goalkeeper'">
+                    <div class="ui-g-{{userPlan.players[position].length ==1? 12:6}}" *ngFor="let playerID of userPlan.players[position]">
                         <player-card [playerID]="playerID"></player-card>
                     </div>
                 </ng-template>

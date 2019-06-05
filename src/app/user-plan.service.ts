@@ -8,10 +8,13 @@ import { Observable } from 'rxjs/internal/Observable';
 export class UserPlanService {
   private _user;
   private _plan={
-    "goalkeeper": [],
-    "defense": ["3"],
-    "midfield":[],
-    "attack":[]
+    "format":"1-2-1",
+    "players":{
+      "goalkeeper": [],
+      "defense": ["3"],
+      "midfield":["",""],
+      "attack":[""]
+    }
   };
   constructor(private authenticationService:AuthenticationService) {
     this._user = authenticationService.getUser();

@@ -23,6 +23,7 @@ import {TableModule} from 'primeng/table';
 import {FieldsetModule} from 'primeng/fieldset';
 import {CheckboxModule} from 'primeng/checkbox';
 import {TooltipModule} from 'primeng/tooltip';
+import {DropdownModule} from 'primeng/dropdown';
 
 
 import { AppComponent } from './app.component';
@@ -79,7 +80,8 @@ import { ObjectivesComponent } from './objectives/objectives.component';
    TableModule,
    FieldsetModule,
    CheckboxModule,
-   TooltipModule
+   TooltipModule,
+   DropdownModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
