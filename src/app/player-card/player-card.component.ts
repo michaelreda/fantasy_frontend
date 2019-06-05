@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { PlayersService } from './../players.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'player-card',
@@ -6,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player-card.component.css']
 })
 export class PlayerCardComponent implements OnInit {
-
-  constructor() { }
+  _player;
+  selectedPlayerIDToGetHisInfo;
+  @Input() set playerID(value){
+    if(value){
+      this._player = this.playersService.getPlayerByID(value);
+    }
+  }
+  constructor(private playersService:PlayersService) { }
 
   ngOnInit() {
   }

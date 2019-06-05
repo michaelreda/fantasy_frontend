@@ -22,6 +22,7 @@ import {CardModule} from 'primeng/card';
 import {TableModule} from 'primeng/table';
 import {FieldsetModule} from 'primeng/fieldset';
 import {CheckboxModule} from 'primeng/checkbox';
+import {TooltipModule} from 'primeng/tooltip';
 
 
 import { AppComponent } from './app.component';
@@ -77,7 +78,8 @@ import { ObjectivesComponent } from './objectives/objectives.component';
    CardModule,
    TableModule,
    FieldsetModule,
-   CheckboxModule
+   CheckboxModule,
+   TooltipModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },

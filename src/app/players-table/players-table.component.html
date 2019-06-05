@@ -1,7 +1,7 @@
 <p-table [value]="players" [paginator]="true" [rows]="10">
     <ng-template pTemplate="header">
         <tr>
-          <th *ngFor="let col of playersCols" [pSortableColumn]="col.field">
+          <th *ngFor="let col of playersCols" [pSortableColumn]="col.field" [pTooltip]="'Sort by player '+col.field" tooltipPosition="top">
               {{col.header}}
               <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
           </th>

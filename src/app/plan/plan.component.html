@@ -24,29 +24,16 @@
             <div class="ui-g">
                 <!-- goalkeeper -->
                 <div class="ui-g-12">
-                    <player-card></player-card>
+                    <player-card [playerID]="userPlan.goalkeeper[0]"></player-card>
                 </div>
-                <!-- defense -->
-                <div class="ui-g-6">
-                    <player-card></player-card>
-                </div>
-                <div class="ui-g-6">
-                    <player-card></player-card>
-                </div>
-                <!-- midfield -->
-                <div class="ui-g-6">
-                    <player-card></player-card>
-                </div>
-                <div class="ui-g-6">
-                    <player-card></player-card>
-                </div>
-                <!-- attack -->
-                <div class="ui-g-6">
-                    <player-card></player-card>
-                </div>
-                <div class="ui-g-6">
-                    <player-card></player-card>
-                </div>
+
+                <!-- Rest Of Positions -->
+                <ng-template *ngFor="let position of Object.keys(userPlan)" [ngIf]="position!='goalkeeper'">
+                    <div class="ui-g-{{userPlan[position].length ==1? 12:6}}" *ngFor="let playerID of userPlan[position]">
+                        <player-card [playerID]="playerID"></player-card>
+                    </div>
+                </ng-template>
+                
             </div>
         </div>
       </div>

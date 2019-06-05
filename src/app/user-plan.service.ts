@@ -1,13 +1,24 @@
 import { AuthenticationService } from './authentication.service';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserPlanService {
   private _user;
+  private _plan={
+    "goalkeeper": [],
+    "defense": ["3"],
+    "midfield":[],
+    "attack":[]
+  };
   constructor(private authenticationService:AuthenticationService) {
     this._user = authenticationService.getUser();
-    console.log(this._user);
-   }
+  }
+
+  getUserPlan(){
+    return this._plan;
+  }
+
 }

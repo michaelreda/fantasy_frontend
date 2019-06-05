@@ -1,0 +1,51 @@
+.name{
+    font-weight: 600;
+    padding-top: .4em;
+    padding-bottom: .4em;
+    text-overflow: ellipsis;
+    padding: .1rem .2rem;
+    background-color: rgba(0,111,55,0.9);
+    color: white;
+}
+
+.player-card-footer{
+    /* width:50%; */
+}
+
+.player-card-subfooter{
+    font-weight: bold;
+    padding: 0 .2rem;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: #00ff87;
+    color:black;
+}
+
+.remove-player{
+    float: left;
+}
+
+* >>>.control-btn{
+    width:25px!important;
+    height:25px!important;
+}
+
+*>>>.delete-btn{
+    background-color: yellow!important;
+}
+
+*>>> .remove-player .ui-button-icon-left{
+    color:red!important;
+}
+
+.player-info{
+    float:right;
+}
+
+*>>> .info-btn{
+    background-color: #f6f6f5!important;
+}
+
+*>>> .player-info .ui-button-icon-left{
+    color:black!important;
+}
