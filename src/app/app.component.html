@@ -1,3 +1,19 @@
 <router-outlet></router-outlet>
 
+<p-dialog *ngIf="dialog" [header]="dialog.title" [(visible)]="dialog.isVisible" draggable="false"
+    resizable="false"
+    modal="true">
+    <div class="ui-g">
+        <div class="ui-g-12 center">
+            {{dialog.content}}
+        </div>
+        
+        <div class="ui-g-12 center">
+            <p-button label="Ok" (click)="dialog.isVisible=false"></p-button>
+        </div>
+    </div>
+    
+    
+</p-dialog>
+
 <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>

@@ -1,3 +1,4 @@
+import { DialogService } from './dialog.service';
 import { ObjectivesService } from './objectives.service';
 import { UserPlanService } from './user-plan.service';
 import { PlayersService } from './players.service';
@@ -94,7 +95,8 @@ import { ObjectivesComponent } from './objectives/objectives.component';
     PlayersService,
     UserPlanService,
     ObjectivesService,
-    ConfirmationService
+    ConfirmationService,
+    DialogService
     ],
   bootstrap: [AppComponent]
 })

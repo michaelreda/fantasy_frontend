@@ -1,3 +1,4 @@
+import { UserPlanService } from './../user-plan.service';
 import { PlayersService } from './../players.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -18,7 +19,7 @@ export class PlayersTableComponent implements OnInit {
 
   players;
 
-  constructor(private playersService:PlayersService) {
+  constructor(private playersService:PlayersService, private userPlanService:UserPlanService) {
     this.players = playersService.getPlayers();
    }
 
@@ -29,7 +30,7 @@ export class PlayersTableComponent implements OnInit {
     this.selectedPlayerIDToGetHisInfo = playerID;
   }
 
-  addPlayerToPlan(playerID){
-    
+  addPlayerToPlan(player){
+    this.userPlanService.addPlayerToPlan(player);
   }
 }
