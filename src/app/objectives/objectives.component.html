@@ -1,0 +1,10 @@
+<p-panel header="This Game week objectives">
+    <p-fieldset [legend]="objectiveType" *ngFor="let objectiveType of Object.keys(userObjectives)">
+        <div class="ui-g">
+            <div class= "ui-g-12" *ngFor="let objectiveItem of userObjectives[objectiveType]">
+                <p-checkbox  [value]="objectiveItem.objective" [label]="objectiveItem.objective" disabled="true"></p-checkbox>
+            </div>
+        </div>
+       
+    </p-fieldset>
+</p-panel>

@@ -1,3 +1,5 @@
+import { ObjectivesService } from './objectives.service';
+import { UserPlanService } from './user-plan.service';
 import { PlayersService } from './players.service';
 import { JWTInterceptor } from './utils/JWTInterceptor';
 import { AuthenticationService } from './authentication.service';
@@ -18,6 +20,8 @@ import {MessageModule} from 'primeng/message';
 import {PanelModule} from 'primeng/panel';
 import {CardModule} from 'primeng/card';
 import {TableModule} from 'primeng/table';
+import {FieldsetModule} from 'primeng/fieldset';
+import {CheckboxModule} from 'primeng/checkbox';
 
 
 import { AppComponent } from './app.component';
@@ -25,10 +29,11 @@ import { RegisterFanIDComponent } from './register-fan-id/register-fan-id.compon
 import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 import { RoutesAuthenticationGuardService } from './routes-authentication-guard.service';
-import { PlayerComponent } from './player/player.component';
 import { PlayerInfoDialogComponent } from './player-info-dialog/player-info-dialog.component';
 import { PlanComponent } from './plan/plan.component';
 import { PlayersTableComponent } from './players-table/players-table.component';
+import { PlayerCardComponent } from './player-card/player-card.component';
+import { ObjectivesComponent } from './objectives/objectives.component';
 
 
 @NgModule({
@@ -37,10 +42,11 @@ import { PlayersTableComponent } from './players-table/players-table.component';
     RegisterFanIDComponent,
     LandingComponent,
     HomeComponent,
-    PlayerComponent,
     PlayerInfoDialogComponent,
     PlanComponent,
-    PlayersTableComponent
+    PlayersTableComponent,
+    PlayerCardComponent,
+    ObjectivesComponent
   ],
   imports: [
     BrowserModule,
@@ -69,14 +75,18 @@ import { PlayersTableComponent } from './players-table/players-table.component';
    MessageModule,
    PanelModule,
    CardModule,
-   TableModule
+   TableModule,
+   FieldsetModule,
+   CheckboxModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
     AuthenticationService,
     RoutesAuthenticationGuardService,
-    PlayersService
+    PlayersService,
+    UserPlanService,
+    ObjectivesService
     ],
   bootstrap: [AppComponent]
 })

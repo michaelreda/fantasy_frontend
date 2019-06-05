@@ -29,4 +29,7 @@ export class PlayersTableComponent implements OnInit {
     this.selectedPlayerIDToGetHisInfo = playerID;
   }
 
+  addPlayerToPlan(playerID){
+    
+  }
 }

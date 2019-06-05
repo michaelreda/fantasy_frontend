@@ -1,3 +1,4 @@
+import { UserPlanService } from './../user-plan.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +11,9 @@ export class PlanComponent implements OnInit {
   moneyRemaining = 100;
   playersSelected = 0;
 
-  constructor() { }
+  constructor(private userPlanService:UserPlanService) {
+
+  }
 
   ngOnInit() {
   }

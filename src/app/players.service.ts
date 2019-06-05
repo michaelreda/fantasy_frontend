@@ -53,6 +53,9 @@ export class PlayersService {
 
   // to be changed later to get data from database
   getPlayerByID(playerID){
-    return this.players[playerID-1];
+    for(let i=0;i<this.players.length;i++){
+      if(this.players[i]._id == playerID)
+        return this.players[i];
+    }
   }
 }
