@@ -1,5 +1,7 @@
+import { UserPlanService } from './../user-plan.service';
 import { PlayersService } from './../players.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 
 @Component({
   selector: 'player-card',
@@ -14,9 +16,13 @@ export class PlayerCardComponent implements OnInit {
       this._player = this.playersService.getPlayerByID(value);
     }
   }
-  constructor(private playersService:PlayersService) { }
+  constructor(private playersService:PlayersService, private userPlanService:UserPlanService) { }
 
   ngOnInit() {
+  }
+
+  removePlayer(){
+    this.userPlanService.removePlayer(this._player);
   }
 
 }

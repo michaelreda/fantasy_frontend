@@ -24,6 +24,8 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {CheckboxModule} from 'primeng/checkbox';
 import {TooltipModule} from 'primeng/tooltip';
 import {DropdownModule} from 'primeng/dropdown';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
 
 
 import { AppComponent } from './app.component';
@@ -81,7 +83,8 @@ import { ObjectivesComponent } from './objectives/objectives.component';
    FieldsetModule,
    CheckboxModule,
    TooltipModule,
-   DropdownModule
+   DropdownModule,
+   ConfirmDialogModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
@@ -90,7 +93,8 @@ import { ObjectivesComponent } from './objectives/objectives.component';
     RoutesAuthenticationGuardService,
     PlayersService,
     UserPlanService,
-    ObjectivesService
+    ObjectivesService,
+    ConfirmationService
     ],
   bootstrap: [AppComponent]
 })
