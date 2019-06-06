@@ -3,6 +3,7 @@ import { AuthenticationService } from './authentication.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import { HostListener } from '@angular/core';
 
 @Injectable({
   providedIn: "root"
@@ -18,6 +19,9 @@ export class UserPlanService {
       attack: [""]
     }
   };
+
+  changesMadeInPlan = false; //used to confirm before closing without applying the new plan;
+
   constructor(
     private authenticationService: AuthenticationService,
     private confirmationService: ConfirmationService,
@@ -42,6 +46,7 @@ export class UserPlanService {
           if (player._id == id) return "";
           return id;
         });
+        this.changesMadeInPlan=true;
       }
     });
   }
@@ -72,7 +77,8 @@ export class UserPlanService {
     for(let i=0;i<this._plan.players[player.position].length;i++){
       if(this._plan.players[player.position][i] == ""){
         this._plan.players[player.position][i] = player._id;
-        return;
+        this.changesMadeInPlan=true;
+        break;
       }
     }
   }

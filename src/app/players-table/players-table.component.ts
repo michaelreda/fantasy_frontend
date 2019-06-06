@@ -20,7 +20,9 @@ export class PlayersTableComponent implements OnInit {
   players;
 
   constructor(private playersService:PlayersService, private userPlanService:UserPlanService) {
-    this.players = playersService.getPlayers();
+    playersService.getPlayers().subscribe(players=>{
+      this.players = players;
+    });
    }
 
   ngOnInit() {

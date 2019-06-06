@@ -9,13 +9,14 @@ export class JWTInterceptor implements HttpInterceptor {
   
   private authenticationService:AuthenticationService;
 
-  constructor( inj: Injector) { 
+  constructor(private inj: Injector) { 
     setTimeout(() => {
       this.authenticationService=inj.get(AuthenticationService)
     })
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    this.authenticationService=this.inj.get(AuthenticationService)
     const token = this.authenticationService.getToken(); 
     if(this.authenticationService.isLoggedIn()){
       req = req.clone({
