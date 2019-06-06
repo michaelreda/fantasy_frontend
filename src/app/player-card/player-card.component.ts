@@ -14,7 +14,9 @@ export class PlayerCardComponent implements OnInit {
   @Input() position;
   @Input() set playerID(value){
     if(value){
-      this._player = this.playersService.getPlayerByID(value);
+      this.playersService.getPlayerByID(value).subscribe(player=>{
+        this._player = player;
+      });
     }
   }
   constructor(private playersService:PlayersService, private userPlanService:UserPlanService) { }

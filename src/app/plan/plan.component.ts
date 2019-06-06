@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class PlanComponent implements OnInit {
 
   moneyRemaining = 100;
-  playersSelected = 0;
+  countPlayersSelected = 0;
   userPlan;
 
   formatOptions=[
@@ -21,12 +21,13 @@ export class PlanComponent implements OnInit {
 
   Object=Object;
 
-  constructor(private userPlanService:UserPlanService) {
-    this.userPlan = this.userPlanService.getUserPlan();
-    this.selectedFormat = this.userPlan.format;
+  constructor(private userPlanService:UserPlanService) {  
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.userPlan = await this.userPlanService.getUserPlan();
+    this.selectedFormat = this.userPlan.format;
+    this.countPlayersSelected = this.userPlanService.getNumberOfPlayersInPlan();
   }
 
   formatChanged(newFormat){
@@ -45,6 +46,9 @@ export class PlanComponent implements OnInit {
     }
   }
 
+  savePlan(){
+    this.userPlanService.savePlan();
+  }
   // if in one position there is more than one player .. then the others must be only one 
   // formatPlan(){
   //   let max=0;

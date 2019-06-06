@@ -1,15 +1,15 @@
-<p-panel header="My Team">
+<p-panel header="My Team" *ngIf="userPlan">
     <p-card>
       <div class="ui-g">
           <div class="ui-g-3 self-vertical-align-center">
-              <p-button class="stretch" label="Apply" styleClass="ui-button-success stretch"></p-button>
+              <p-button class="stretch" label="Apply" styleClass="ui-button-success stretch" (click)="savePlan()"></p-button>
           </div>
           <div class="ui-g-3 self-vertical-align-center">
               <p-button class="stretch" label="Cancel" styleClass="ui-button-secondry stretch"></p-button>
           </div>
           <div class="ui-g-3">
               <h3 class="no-margin center">Players selected</h3>
-              <h4 class="no-margin center">0/7</h4>
+              <h4 class="no-margin center">{{countPlayersSelected}}/5</h4>
           </div>
           <div class="ui-g-3">
               <h3 class="no-margin center">Money remaining</h3>
