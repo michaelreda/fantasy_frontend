@@ -13,6 +13,7 @@ export class DialogService {
   dialogSubject: Subject<any>;
   constructor() {
     this.dialogSubject = new Subject<any>();
+    //app component subscribes to dialogObservable
     this.dialogObservable = this.dialogSubject.asObservable();
    }
 

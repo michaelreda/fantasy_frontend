@@ -2,9 +2,14 @@
 
 <p-dialog *ngIf="dialog" [header]="dialog.title" [(visible)]="dialog.isVisible" draggable="false"
     resizable="false"
-    modal="true">
+    modal="true"
+    [style]="{width: '500px'}"
+    >
     <div class="ui-g">
-        <div class="ui-g-12 center">
+        <div class="ui-g-2 center self-vertical-align-center">
+            <i class="pi pi-info-circle" style="font-size: 50px;"></i>
+        </div>
+        <div class="ui-g-10 center">
             {{dialog.content}}
         </div>
         

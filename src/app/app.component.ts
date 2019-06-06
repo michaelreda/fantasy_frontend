@@ -10,7 +10,6 @@ export class AppComponent {
   dialog;
   constructor(private dialogService:DialogService){
     this.dialogService.dialogObservable.subscribe(dialog=>{
-      console.log(dialog);
       this.dialog = dialog;
     })
   }
