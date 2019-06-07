@@ -1,5 +1,7 @@
+import { OnInit } from '@angular/core';
 import { UserPlanService } from './../user-plan.service';
 import { Component, OnInit } from '@angular/core';
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 
 @Component({
   selector: 'app-plan',
@@ -8,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlanComponent implements OnInit {
 
+
   moneyRemaining = 100;
   countPlayersSelected = 0;
   userPlan;
+  changesMadeInPlan:Boolean =false;
 
   formatOptions=[
     {"label":"2-1-1","value":"2-1-1"},
@@ -21,33 +25,35 @@ export class PlanComponent implements OnInit {
 
   Object=Object;
 
-  constructor(private userPlanService:UserPlanService) {  
+  constructor(private userPlanService:UserPlanService, private confirmationService:ConfirmationService) {  
+    this.userPlanService.changesMadeInPlanObservable.subscribe(changesMadeInPlan=>{
+      this.changesMadeInPlan= changesMadeInPlan;
+    });
+    this.userPlanService.planObservable.subscribe(plan=>{
+      this.userPlan = plan;
+      this.selectedFormat = this.userPlan.format;
+      this.countPlayersSelected = this.userPlanService.getNumberOfPlayersInPlan();
+    })
   }
 
-  async ngOnInit() {
-    this.userPlan = await this.userPlanService.getUserPlan();
-    this.selectedFormat = this.userPlan.format;
-    this.countPlayersSelected = this.userPlanService.getNumberOfPlayersInPlan();
+  ngOnInit() {
   }
-
+  
   formatChanged(newFormat){
-    this.userPlan.format = newFormat;
-    this.resizePosition("defense",newFormat.split("-")[0]);
-    this.resizePosition("midfield",newFormat.split("-")[1]);
-    this.resizePosition("attack",newFormat.split("-")[2]); 
-  }
-
-  resizePosition(position,newSize){
-    let oldSize = this.userPlan.players[position].length;
-    if(oldSize<newSize){
-      this.userPlan.players[position].push("");
-    }else if(oldSize>newSize){
-      this.userPlan.players[position].pop();
-    }
+    this.userPlanService.formatChanged(newFormat);
   }
 
   savePlan(){
     this.userPlanService.savePlan();
+  }
+
+  discardChanges(){
+    this.confirmationService.confirm({
+      message: "Are you sure you want to discard all the changes you made?",
+      accept: () => {
+        this.userPlanService.getUserPlan();
+      }
+    });
   }
   // if in one position there is more than one player .. then the others must be only one 
   // formatPlan(){

@@ -17,6 +17,8 @@ export class PlayerCardComponent implements OnInit {
       this.playersService.getPlayerByID(value).subscribe(player=>{
         this._player = player;
       });
+    }else{
+      this._player = undefined;
     }
   }
   constructor(private playersService:PlayersService, private userPlanService:UserPlanService) { }

@@ -2,10 +2,10 @@
     <p-card>
       <div class="ui-g">
           <div class="ui-g-3 self-vertical-align-center">
-              <p-button class="stretch" label="Apply" styleClass="ui-button-success stretch" (click)="savePlan()"></p-button>
+              <p-button class="stretch" label="Apply" [disabled]="!changesMadeInPlan" styleClass="ui-button-success stretch" (click)="savePlan()"></p-button>
           </div>
           <div class="ui-g-3 self-vertical-align-center">
-              <p-button class="stretch" label="Cancel" styleClass="ui-button-secondry stretch"></p-button>
+              <p-button class="stretch" label="Cancel" [disabled]="!changesMadeInPlan" styleClass="ui-button-secondry stretch" (click)="discardChanges()"></p-button>
           </div>
           <div class="ui-g-3">
               <h3 class="no-margin center">Players selected</h3>

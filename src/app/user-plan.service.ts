@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import { HostListener } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Injectable({
   providedIn: "root"
@@ -23,27 +24,33 @@ export class UserPlanService {
     }
   };
 
-  changesMadeInPlan = false; //used to confirm before closing without applying the new plan;
-
+  //used to confirm before closing without applying the new plan;
+  changesMadeInPlanSubject: Subject<Boolean>= new Subject<Boolean>();
+  changesMadeInPlanObservable: Observable<Boolean>  = this.changesMadeInPlanSubject.asObservable();
+  
+  planSubject: Subject<Boolean>= new Subject<any>();
+  planObservable: Observable<Boolean>  = this.planSubject.asObservable();
   constructor(
     private confirmationService: ConfirmationService,
     private dialogService: DialogService,
     private http: HttpClient
-  ) {}
+  ) {
+    this.getUserPlan();
+  }
 
-  async getUserPlan() {
-    await this.http
+  getUserPlan() {
+    this.http
       .get("/get_current_gameweek_plan")
-      .toPromise()
-      .then(res => {
+      .subscribe(res => {
         if (res == null || res == undefined) {
           this._plan = this._defaultPlan;
         } else {
           this._plan = res;
           this._plan = this.formatPlayers(this._plan);
         }
+        this.changesMadeInPlanSubject.next(false);
+        this.planSubject.next(this._plan);
       });
-    return this._plan;
   }
 
   removePlayer(player) {
@@ -58,7 +65,8 @@ export class UserPlanService {
           if (player._id == id) return "";
           return id;
         });
-        this.changesMadeInPlan = true;
+        this.changesMadeInPlanSubject.next(true);
+        this.planSubject.next(this._plan);
       }
     });
   }
@@ -99,14 +107,15 @@ export class UserPlanService {
     for (let i = 0; i < this._plan.players[player.position].length; i++) {
       if (this._plan.players[player.position][i] == "") {
         this._plan.players[player.position][i] = player._id;
-        this.changesMadeInPlan = true;
+        this.changesMadeInPlanSubject.next(true);
         break;
       }
     }
+    this.planSubject.next(this._plan);
   }
 
   // if positon is defense and format is 2-1-1, the function returns 2
-  getMaxNumberOfPlayersInPositionInTheFormat(position) {
+  private getMaxNumberOfPlayersInPositionInTheFormat(position) {
     if (position == "goalkeeper") return 1;
     let positionIndexInFormat;
     switch (position) {
@@ -124,7 +133,7 @@ export class UserPlanService {
   }
 
   //transforms from defense,mid,.. to players:{def:["id",""],....}
-  formatPlayers(plan) {
+  private formatPlayers(plan) {
     plan.players = {
       goalkeeper: this.formatPositionArraySize(plan.goalkeeper,this.getMaxNumberOfPlayersInPositionInTheFormat("goalkeeper")),
       defense: this.formatPositionArraySize(plan.defense,this.getMaxNumberOfPlayersInPositionInTheFormat("defense")),
@@ -139,16 +148,15 @@ export class UserPlanService {
     return plan;
   }
 
-  formatPositionArraySize(arr, size) {
-    for (var i = 0; i < size - arr.length; i++) {
+  private formatPositionArraySize(arr, size) {
+    while(arr.length<size){
       arr.push("");
     }
-
     return arr;
   }
 
   //returns current number of players in a position in the plan
-  playersCountInPosition(position) {
+  private playersCountInPosition(position) {
     let count = 0;
     for (let i = 0; i < this._plan.players[position].length; i++) {
       if (this._plan.players[position][i] != "") count++;
@@ -157,13 +165,36 @@ export class UserPlanService {
   }
 
   getNumberOfPlayersInPlan() {
-    //to do to bring number of players in plan from server
-    return 0;
+    let count = 0;
+    let allPlayers= [].concat(this._plan.players.goalkeeper,this._plan.players.defense,this._plan.players.midfield,this._plan.players.attack);
+    for (var i=0;i<allPlayers.length;i++){
+      if(allPlayers[i]!="")
+        count ++;
+    }
+    return count;
   }
 
   savePlan() {
     this.http.post("/save_plan", this._plan).subscribe(res => {
       console.log(res);
     });
+  }
+
+  formatChanged(newFormat){
+    this._plan.format = newFormat;
+    this.resizePosition("defense",newFormat.split("-")[0]);
+    this.resizePosition("midfield",newFormat.split("-")[1]);
+    this.resizePosition("attack",newFormat.split("-")[2]); 
+    this.changesMadeInPlanSubject.next(true);
+    this.planSubject.next(this._plan);
+  }
+
+  private resizePosition(position,newSize){
+    let oldSize = this._plan.players[position].length;
+    if(oldSize<newSize){
+      this._plan.players[position].push("");
+    }else if(oldSize>newSize){
+      this._plan.players[position].pop();
+    }
   }
 }
