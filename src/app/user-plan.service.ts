@@ -21,7 +21,9 @@ export class UserPlanService {
       defense: [""],
       midfield: ["", ""],
       attack: [""]
-    }
+    },
+    cost:0,
+    totalMoneyForThisGameWeek:0
   };
 
   //used to confirm before closing without applying the new plan;
@@ -30,6 +32,10 @@ export class UserPlanService {
   
   planSubject: Subject<Boolean>= new Subject<any>();
   planObservable: Observable<Boolean>  = this.planSubject.asObservable();
+
+  moneyRemainingSubject: Subject<number> = new Subject<number>();
+  moneyRemaingingObservable: Observable<number>= this.moneyRemainingSubject.asObservable();
+
   constructor(
     private confirmationService: ConfirmationService,
     private dialogService: DialogService,
@@ -50,6 +56,7 @@ export class UserPlanService {
         }
         this.changesMadeInPlanSubject.next(false);
         this.planSubject.next(this._plan);
+        this.moneyRemainingSubject.next(this._plan.totalMoneyForThisGameWeek - this._plan.cost);
       });
   }
 

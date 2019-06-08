@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { DialogService } from './dialog.service';
 import { ObjectivesService } from './objectives.service';
 import { UserPlanService } from './user-plan.service';
@@ -39,6 +40,7 @@ import { PlanComponent } from './plan/plan.component';
 import { PlayersTableComponent } from './players-table/players-table.component';
 import { PlayerCardComponent } from './player-card/player-card.component';
 import { ObjectivesComponent } from './objectives/objectives.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -51,7 +53,8 @@ import { ObjectivesComponent } from './objectives/objectives.component';
     PlanComponent,
     PlayersTableComponent,
     PlayerCardComponent,
-    ObjectivesComponent
+    ObjectivesComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +99,8 @@ import { ObjectivesComponent } from './objectives/objectives.component';
     UserPlanService,
     ObjectivesService,
     ConfirmationService,
-    DialogService
+    DialogService,
+    UserService
     ],
   bootstrap: [AppComponent]
 })

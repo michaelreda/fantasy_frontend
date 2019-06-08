@@ -48,3 +48,7 @@ a {
 .no-padding {
   padding: 0px;
 }
+
+body{
+  margin: 0px;
+}

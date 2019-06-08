@@ -1,6 +1,6 @@
 import { OnInit } from '@angular/core';
 import { UserPlanService } from './../user-plan.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 
 @Component({
@@ -11,7 +11,7 @@ import { ConfirmationService } from 'primeng/components/common/confirmationservi
 export class PlanComponent implements OnInit {
 
 
-  moneyRemaining = 100;
+  moneyRemaining = undefined;
   countPlayersSelected = 0;
   userPlan;
   changesMadeInPlan:Boolean =false;
@@ -34,6 +34,10 @@ export class PlanComponent implements OnInit {
       this.selectedFormat = this.userPlan.format;
       this.countPlayersSelected = this.userPlanService.getNumberOfPlayersInPlan();
     })
+
+    this.userPlanService.moneyRemaingingObservable.subscribe(moneyRemaining=>{
+      this.moneyRemaining=moneyRemaining;
+    });
   }
 
   ngOnInit() {

@@ -16,6 +16,8 @@ export class PlayersTableComponent implements OnInit {
     { field: 'price', header: 'Price' }
   ];
 
+  
+
 
   players;
 
