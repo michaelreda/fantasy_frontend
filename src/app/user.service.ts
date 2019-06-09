@@ -19,4 +19,15 @@ export class UserService {
       this.userSubject.next(user)
     })
   }
+
+  redeemCode(code){
+    this.http.post("/redeem_code",{"code":code}).subscribe(res=>{
+      if(res["newUserPoints"]){
+        this._user.points = res["newUserPoints"];
+        this._user.money = res["newUserMoney"];
+        this.userSubject.next(this._user);
+      }
+    })
+  }
+
 }

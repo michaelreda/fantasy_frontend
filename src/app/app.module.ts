@@ -1,3 +1,4 @@
+import { HttpResponseToastInterceptor } from './utils/httpResponseToastInterceptor';
 import { UserService } from './user.service';
 import { DialogService } from './dialog.service';
 import { ObjectivesService } from './objectives.service';
@@ -28,6 +29,8 @@ import {TooltipModule} from 'primeng/tooltip';
 import {DropdownModule} from 'primeng/dropdown';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
+import {InputMaskModule} from 'primeng/inputmask';
+import {ToastModule} from 'primeng/toast';
 
 
 import { AppComponent } from './app.component';
@@ -41,6 +44,8 @@ import { PlayersTableComponent } from './players-table/players-table.component';
 import { PlayerCardComponent } from './player-card/player-card.component';
 import { ObjectivesComponent } from './objectives/objectives.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { RedeemCodeComponent } from './redeem-code/redeem-code.component';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 
 @NgModule({
@@ -54,7 +59,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     PlayersTableComponent,
     PlayerCardComponent,
     ObjectivesComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    RedeemCodeComponent
   ],
   imports: [
     BrowserModule,
@@ -88,11 +94,14 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
    CheckboxModule,
    TooltipModule,
    DropdownModule,
-   ConfirmDialogModule
+   ConfirmDialogModule,
+   InputMaskModule,
+   ToastModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpResponseToastInterceptor, multi: true },
     AuthenticationService,
     RoutesAuthenticationGuardService,
     PlayersService,
@@ -100,7 +109,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ObjectivesService,
     ConfirmationService,
     DialogService,
-    UserService
+    UserService,
+    MessageService
     ],
   bootstrap: [AppComponent]
 })
