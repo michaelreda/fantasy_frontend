@@ -31,6 +31,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {InputMaskModule} from 'primeng/inputmask';
 import {ToastModule} from 'primeng/toast';
+import {MenubarModule} from 'primeng/menubar';
 
 
 import { AppComponent } from './app.component';
@@ -46,6 +47,7 @@ import { ObjectivesComponent } from './objectives/objectives.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RedeemCodeComponent } from './redeem-code/redeem-code.component';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { PageHeaderComponent } from './page-header/page-header.component';
 
 
 @NgModule({
@@ -60,7 +62,8 @@ import { MessageService } from 'primeng/components/common/messageservice';
     PlayerCardComponent,
     ObjectivesComponent,
     UserProfileComponent,
-    RedeemCodeComponent
+    RedeemCodeComponent,
+    PageHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +99,8 @@ import { MessageService } from 'primeng/components/common/messageservice';
    DropdownModule,
    ConfirmDialogModule,
    InputMaskModule,
-   ToastModule
+   ToastModule,
+   MenubarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },

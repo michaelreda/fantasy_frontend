@@ -1,0 +1,51 @@
+.green-bg{
+    background: #00ff87
+}
+
+
+.scratches{
+    background-image: url(/assets/images/scratches.png);
+    background-position: right 11%;
+    background-repeat: no-repeat;
+}
+
+.header-title{
+    padding-left:10%!important;
+    margin-block-start: 1.50em!important;
+    font-weight: 1000;
+    font-size: 54px;
+}
+
+@media(max-width:640px){
+    .header-title{
+        color: white!important;
+        text-shadow: 3px 2px 6px black;
+    }
+}
+
+
+/* MENU BAR */
+*>>> .ui-menubar{
+    background-color: #37003c;
+    border-width: 0;
+    border-radius: 0px;
+    padding-left:10px;
+}
+
+*>>> .ui-menuitem-text, *>>> .ui-menuitem-icon{
+    color: white!important;
+    font-size: 19px;
+}
+
+*>>> .ui-menuitem-link:hover{
+    background-color: #a52828!important;
+}
+
+/* *>>> .ui-menuitem-text:hover, *>>> .ui-menuitem-icon:hover, *>>>.ui-menuitem-active{
+    color: #333333!important;
+    font-size: 19px;
+} */
+/* 
+*>>> .ui-menuitem-link:hover{
+    color: #333333!important;
+} */

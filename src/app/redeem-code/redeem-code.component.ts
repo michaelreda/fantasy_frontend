@@ -16,6 +16,7 @@ export class RedeemCodeComponent implements OnInit {
 
   redeemCode(code){
     this.userService.redeemCode(code);
+    
     this.code ="";
   }
 

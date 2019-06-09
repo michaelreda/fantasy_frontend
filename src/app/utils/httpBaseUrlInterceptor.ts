@@ -5,10 +5,15 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class BaseUrlInterceptor implements HttpInterceptor {
+  baseUrl = "https://rfc-fantasy-server.herokuapp.com"
+  constructor(){
+    if(window.location.origin.includes("localhost"))
+      this.baseUrl = "http://localhost:8080";
+  }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const url = 'http://localhost:8080';
+    
     req = req.clone({
-      url: url + req.url
+      url: this.baseUrl + req.url
     });
     return next.handle(req);
   }
