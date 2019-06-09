@@ -7,8 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./player-info-dialog.component.css']
 })
 export class PlayerInfoDialogComponent implements OnInit {
-  private isDialogVisible = false;
-  private _player;
+   isDialogVisible = false;
+   _player;
 
   @Input() set playerID(value:string){
     if(value){
