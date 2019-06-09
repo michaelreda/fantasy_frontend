@@ -16,7 +16,11 @@ export class LandingComponent implements OnInit {
   password="";
 
   errors=[];
-  constructor(private http: HttpClient,private authenticationService:AuthenticationService, private router:Router) { }
+  constructor(private http: HttpClient,private authenticationService:AuthenticationService, private router:Router) {
+    if(this.authenticationService.isLoggedIn()){
+      this.router.navigateByUrl("/home");
+    }
+   }
 
   ngOnInit() {
   }
