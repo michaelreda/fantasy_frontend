@@ -41,6 +41,14 @@
     background-color: #a52828!important;
 }
 
+
+.header-players-img{
+    background-image: url('assets/images/header-players.png');
+    background-repeat: no-repeat;
+    background-size: auto 240px;
+    background-position: bottom;
+    height: 100%;
+}
 /* *>>> .ui-menuitem-text:hover, *>>> .ui-menuitem-icon:hover, *>>>.ui-menuitem-active{
     color: #333333!important;
     font-size: 19px;

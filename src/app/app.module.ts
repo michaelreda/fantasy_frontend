@@ -32,6 +32,7 @@ import {ConfirmationService} from 'primeng/api';
 import {InputMaskModule} from 'primeng/inputmask';
 import {ToastModule} from 'primeng/toast';
 import {MenubarModule} from 'primeng/menubar';
+import {ProgressBarModule} from 'primeng/progressbar';
 
 
 import { AppComponent } from './app.component';
@@ -100,7 +101,8 @@ import { PageHeaderComponent } from './page-header/page-header.component';
    ConfirmDialogModule,
    InputMaskModule,
    ToastModule,
-   MenubarModule
+   MenubarModule,
+   ProgressBarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },

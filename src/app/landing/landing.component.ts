@@ -15,6 +15,8 @@ export class LandingComponent implements OnInit {
   username="";
   password="";
 
+  loggingIn = false; //used for showing and hiding progress bar
+
   errors=[];
   constructor(private http: HttpClient,private authenticationService:AuthenticationService, private router:Router) {
     if(this.authenticationService.isLoggedIn()){
@@ -31,6 +33,7 @@ export class LandingComponent implements OnInit {
 
   login(){
     this.errors = [];
+    this.loggingIn = true;
       this.http
         .post("/login", {
           username: this.username,
@@ -49,6 +52,7 @@ export class LandingComponent implements OnInit {
           }else{
             this.errors.push({severity:'error', detail:"Unknown error."});
           }
+          this.loggingIn = false;
         });
   }
 

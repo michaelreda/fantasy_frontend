@@ -14,7 +14,11 @@ export class UserService {
   userObservable: Observable<any>= this.userSubject.asObservable();
 
   constructor(private http:HttpClient) {
-    http.get("/user").subscribe(user=>{
+    this.getUser();
+  }
+
+  getUser(){
+    this.http.get("/user").subscribe(user=>{
       this._user = user;
       this.userSubject.next(user)
     })

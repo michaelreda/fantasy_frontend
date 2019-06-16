@@ -1,3 +1,5 @@
+import { MessageService } from 'primeng/components/common/messageservice';
+import { UserService } from './user.service';
 import { HttpClient } from '@angular/common/http';
 import { DialogService } from './dialog.service';
 import { AuthenticationService } from './authentication.service';
@@ -7,12 +9,14 @@ import { ConfirmationService } from 'primeng/components/common/confirmationservi
 import { HostListener } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs/internal/Subject';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: "root"
 })
 export class UserPlanService {
   private _plan;
+  userMoney;
 
   private _defaultPlan = {
     format: "1-2-1",
@@ -22,8 +26,7 @@ export class UserPlanService {
       midfield: ["", ""],
       attack: [""]
     },
-    cost:0,
-    totalMoneyForThisGameWeek:0
+    cost:0
   };
 
   //used to confirm before closing without applying the new plan;
@@ -33,15 +36,21 @@ export class UserPlanService {
   planSubject: Subject<Boolean>= new Subject<any>();
   planObservable: Observable<Boolean>  = this.planSubject.asObservable();
 
-  moneyRemainingSubject: Subject<number> = new Subject<number>();
+  moneyRemainingSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   moneyRemaingingObservable: Observable<number>= this.moneyRemainingSubject.asObservable();
 
   constructor(
     private confirmationService: ConfirmationService,
+    private userService:UserService,
     private dialogService: DialogService,
-    private http: HttpClient
+    private http: HttpClient,
+    private messageService: MessageService
   ) {
     this.getUserPlan();
+
+    this.userService.userObservable.subscribe(user=>{
+      this.userMoney = user.money;
+    })
   }
 
   getUserPlan() {
@@ -56,7 +65,7 @@ export class UserPlanService {
         }
         this.changesMadeInPlanSubject.next(false);
         this.planSubject.next(this._plan);
-        this.moneyRemainingSubject.next(this._plan.totalMoneyForThisGameWeek - this._plan.cost);
+        this.moneyRemainingSubject.next(this.userMoney);
       });
   }
 
@@ -74,6 +83,8 @@ export class UserPlanService {
         });
         this.changesMadeInPlanSubject.next(true);
         this.planSubject.next(this._plan);
+        // this._plan.cost -= player.price;
+        this.moneyRemainingSubject.next(this.moneyRemainingSubject.getValue() + player.price);
       }
     });
   }
@@ -81,10 +92,6 @@ export class UserPlanService {
   addPlayerToPlan(player) {
     let playerPosition = player.position;
     let playerID = player._id;
-
-    // ========================================
-    //TO DO check for money
-    // ========================================
 
     //check if player already exists
     if (this._plan.players[playerPosition].includes(playerID)) {
@@ -119,6 +126,8 @@ export class UserPlanService {
       }
     }
     this.planSubject.next(this._plan);
+    // this._plan.cost += player.price;
+    this.moneyRemainingSubject.next(this.moneyRemainingSubject.getValue() - player.price);
   }
 
   // if positon is defense and format is 2-1-1, the function returns 2
@@ -182,8 +191,16 @@ export class UserPlanService {
   }
 
   savePlan() {
-    this.http.post("/save_plan", this._plan).subscribe(res => {
+    //check for money
+    if(this.moneyRemainingSubject.getValue()<0){
+      this.messageService.add({severity:'error', summary:"You do not have enough money."});
+      return;
+    }
+
+    this.http.post("/save_plan", this._plan).subscribe(async res => {
       console.log(res);
+      await this.userService.getUser();
+      await this.getUserPlan();
     });
   }
 

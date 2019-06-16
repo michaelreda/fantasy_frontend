@@ -1,0 +1,6 @@
+*>>> .ui-progressbar{
+    position: relative;
+    top: -8px;
+    margin: 0px -14px;
+    height: 4px!important;
+}

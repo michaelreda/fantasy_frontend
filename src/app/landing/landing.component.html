@@ -36,6 +36,7 @@
       resizable="false"
       modal="true"
     >
+    <p-progressBar mode="indeterminate" *ngIf="loggingIn"></p-progressBar>
       <p-messages [(value)]="errors"></p-messages>
       <div class="center">
         <div class="ui-inputgroup">
@@ -61,7 +62,7 @@
         </div>
         <br />
 
-        <p-button label="Login" (click)="login()"></p-button>
+        <p-button label="Login" [disabled]="loggingIn" (click)="login()"></p-button>
       </div>
     </p-dialog>
   </div>
