@@ -4,3 +4,11 @@
     margin: 0px -14px;
     height: 4px!important;
 }
+
+*>>> .ui-dialog{
+    width: 235px!important;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: 0 auto!important;
+}

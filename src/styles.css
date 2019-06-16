@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 .english-cont {
   text-align: left;
-  padding-left: 50px;
+  /* padding-left: 50px; */
 }
 
 .center {
@@ -21,6 +21,14 @@
 .self-vertical-align-center {
   -webkit-align-self: center;
   align-self: center;
+}
+
+.float-left{
+  float: left!important;
+}
+
+.float-right{
+  float: right!important;
 }
 
 app-register-fan-id {

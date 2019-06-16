@@ -1,4 +1,4 @@
-<section id="home" class="parallax-section">
+<section id="home" class="parallax-section" style="height: fit-content!important;">
   <div class="container form-container">
     <div class="row">
   
@@ -79,10 +79,13 @@
                         
                         <!-- Button (Double) -->
                         <div class="form-group wow fadeInUp" data-wow-delay="1.2s">
-                          <div class="col-md-8">
-                            <button id="button1id" name="button1id" class="btn btn-success section-btn" (click)="submit()">Get my FAN ID</button>
-                            <button id="button2id" routerLink="" name="button2id" class="btn btn-danger section-btn">Cancel</button>
+                          <div class="ui-g center">
+                              <div class="ui-g-8 ui-sm-12 center">
+                                  <button id="button1id" name="button1id" class="btn btn-success section-btn ui-sm-6" (click)="submit()">Get my FAN ID</button>
+                                  <button id="button2id" routerLink="" name="button2id" class="btn btn-danger section-btn ui-sm-6">Cancel</button>
+                              </div>
                           </div>
+                          
                         </div>
                     
                     </fieldset>

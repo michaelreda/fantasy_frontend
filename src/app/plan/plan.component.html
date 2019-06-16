@@ -1,6 +1,6 @@
 <p-panel header="My Team" *ngIf="userPlan">
     <p-card>
-      <div class="ui-g">
+      <div class="ui-g no-padding plan-header-font-size">
           <div class="ui-g-3 self-vertical-align-center">
               <p-button class="stretch" label="Apply" [disabled]="!changesMadeInPlan" styleClass="ui-button-success stretch" (click)="savePlan()"></p-button>
           </div>
@@ -8,12 +8,12 @@
               <p-button class="stretch" label="Cancel" [disabled]="!changesMadeInPlan" styleClass="ui-button-secondry stretch" (click)="discardChanges()"></p-button>
           </div>
           <div class="ui-g-3">
-              <h3 class="no-margin center" style="letter-spacing: 0px;">Players selected</h3>
-              <h4 class="no-margin center">{{countPlayersSelected}}/5</h4>
+              <h3 class="no-margin center plan-header-font-size" style="letter-spacing: 0px;">Players selected</h3>
+              <h4 class="no-margin center plan-header-font-size">{{countPlayersSelected}}/5</h4>
           </div>
           <div class="ui-g-3">
-              <h3 class="no-margin center" style="letter-spacing: 0px;">Money remaining</h3>
-              <h4 class="no-margin center" *ngIf="moneyRemaining">{{moneyRemaining}}$</h4>
+              <h3 class="no-margin center plan-header-font-size" style="letter-spacing: 0px;">Money remaining</h3>
+              <h4 class="no-margin center plan-header-font-size" *ngIf="moneyRemaining">{{moneyRemaining}}$</h4>
           </div>
       </div>
     </p-card>

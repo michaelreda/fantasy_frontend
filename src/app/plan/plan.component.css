@@ -14,3 +14,20 @@
 .format{
     background-color:#38003c;
 }
+
+
+@media (max-width:680px){
+    .plan-header-font-size{
+        font-size:12px!important;
+        line-height: 15px!important;
+    }
+    *>>>.ui-button.ui-button-text-only .ui-button-text{
+        padding: 3px 0px!important;
+    }
+    *>>>.ui-card-body{
+        padding: 0px!important;
+    }
+    .players{
+        width:100%!important;
+    }
+}
