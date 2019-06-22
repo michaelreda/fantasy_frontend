@@ -1,3 +1,5 @@
+import { LoaderInterceptor } from './utils/loaderInterceptor';
+import { LoaderService } from './loader.service';
 import { HttpResponseToastInterceptor } from './utils/httpResponseToastInterceptor';
 import { UserService } from './user.service';
 import { DialogService } from './dialog.service';
@@ -108,6 +110,7 @@ import { PageHeaderComponent } from './page-header/page-header.component';
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpResponseToastInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     AuthenticationService,
     RoutesAuthenticationGuardService,
     PlayersService,
@@ -116,7 +119,8 @@ import { PageHeaderComponent } from './page-header/page-header.component';
     ConfirmationService,
     DialogService,
     UserService,
-    MessageService
+    MessageService,
+    LoaderService
     ],
   bootstrap: [AppComponent]
 })

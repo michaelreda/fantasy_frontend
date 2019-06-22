@@ -16,10 +16,11 @@ export class HttpResponseToastInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       tap(evt => {
         if (evt instanceof HttpResponse) {
-          if (evt.body && evt.body.errors)
+          if (evt.body && evt.body.errors){
             this.messageService.add({severity:'error', summary:evt.body.errors});
-          else if(evt.body && evt.body.success)
+          } else if(evt.body && evt.body.success){
             this.messageService.add({severity:'success', summary:evt.body.success});
+          }
         }
       })
     );

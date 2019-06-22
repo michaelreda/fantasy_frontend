@@ -26,17 +26,19 @@ export class RegisterFanIDComponent implements OnInit {
 
   submit() {
     if (this.password != this.password2) {
-      alert("Verified password should be the same as the password");
+      alert("Verified password should be the same as the password.");
     } else if (this.firstName == "") {
-      alert("Please enter your first name");
+      alert("Please enter your first name.");
     } else if (this.lastName == "") {
-      alert("Please enter your last name");
+      alert("Please enter your last name.");
     } else if (this.username == "") {
-      alert("Please enter a username");
+      alert("Please enter a username.");
+    } else if (this.username.includes(' ')) {
+      alert("Username should not contain any spaces.");
     } else if (this.password == "") {
-      alert("Please enter a password");
+      alert("Please enter a password.");
     } else if (this.class == "0") {
-      alert("Please enter your class");
+      alert("Please enter your class.");
     } else {
       this.http
         .post(
@@ -48,8 +50,7 @@ export class RegisterFanIDComponent implements OnInit {
             password: this.password,
             confirmPassword: this.password2,
             class: this.class
-          },
-          { responseType: "text" }
+          }
         )
         .subscribe(data => {
           console.log(data);
@@ -58,15 +59,6 @@ export class RegisterFanIDComponent implements OnInit {
             this.router.navigateByUrl("/home");
           }
         });
-      // this.http.post("https://api.mlab.com/api/1/databases/tazkarti/collections/users?apiKey=NfAwNomQ8kZmlVKuFU8Vx6ShVIgZLy_P",{
-      //     name:this.name,
-      //     username: this.username,
-      //     password:this.password,
-      //     mobile: this.mobile,
-      //     team: this.team
-      //   }).subscribe((data)=>{
-      //     console.log(data);
-      //   })
     }
   }
 }
