@@ -7,26 +7,32 @@ export class ObjectivesService {
   userObjectives={
     "attendance":[
       {
-        "objective":"Holy Mass",
+        "objective":"Holy Mass (el odas)",
         "isDone":true,
-        "earns": 10
+        "points": 20
       },
       {
-        "objective":"Monday",
+        "objective":"Monday (nady el kenisa)",
         "isDone":false,
-        "earns": 5
+        "points": 2
       }
     ],
     "memorizing":[
       {
-        "objective":"Psalm 23",
+        "objective":"Mazmoor 69 (اللهم التفت إلى معونتى)",
         "isDone":true,
-        "earns": 15
+        "points": 10
       },
       {
-        "objective":"Ti shori",
+        "objective":"Mazmoor 66 (ليترأف الله علينا)",
         "isDone":false,
-        "earns": 15
+        "points": 20
+      },
+      {
+        "objective":"ذكصولوجية الرسل ",
+        "isDone":false,
+        "points": 25,
+        "href": "https://www.youtube.com/watch?v=A24b5qnBNpw"
       }
     ]
   };

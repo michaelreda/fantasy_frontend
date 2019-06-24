@@ -9,12 +9,13 @@ import {Router} from "@angular/router"
   styleUrls: ["./register-fan-id.component.css"]
 })
 export class RegisterFanIDComponent implements OnInit {
-  firstName: String;
-  lastName: String;
-  username: String;
-  password: String;
-  password2: String;
-  class: String = "0";
+  firstName: string;
+  lastName: string;
+  username: string;
+  password: string;
+  password2: string;
+  class: string = "0";
+  userImage;
 
   constructor(
     private http: HttpClient,
@@ -40,17 +41,19 @@ export class RegisterFanIDComponent implements OnInit {
     } else if (this.class == "0") {
       alert("Please enter your class.");
     } else {
+      let input = new FormData();
+      // Add your values in here
+      input.append('firstName', this.firstName);
+      input.append('lastName',  this.lastName);
+      input.append('username',  this.username);
+      input.append('password',  this.password);
+      input.append('confirmPassword',  this.password2);
+      input.append('class',  this.class);
+      // input.append('userImage',  this.userImage);
       this.http
         .post(
           "/signup",
-          {
-            firstName: this.firstName,
-            lastName: this.lastName,
-            username: this.username,
-            password: this.password,
-            confirmPassword: this.password2,
-            class: this.class
-          }
+          input
         )
         .subscribe(data => {
           console.log(data);
