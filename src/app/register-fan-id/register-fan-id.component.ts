@@ -15,6 +15,7 @@ export class RegisterFanIDComponent implements OnInit {
   password: string;
   password2: string;
   class: string = "0";
+  teamName: string;
   userImage;
 
   constructor(
@@ -46,6 +47,7 @@ export class RegisterFanIDComponent implements OnInit {
       input.append('firstName', this.firstName);
       input.append('lastName',  this.lastName);
       input.append('username',  this.username);
+      input.append('teamName',  this.teamName);
       input.append('password',  this.password);
       input.append('confirmPassword',  this.password2);
       input.append('class',  this.class);
