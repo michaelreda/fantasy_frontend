@@ -47,7 +47,6 @@ export class UserPlanService {
     private messageService: MessageService
   ) {
     this.getUserPlan();
-
     this.userService.userObservable.subscribe(user=>{
       this.userMoney = user.money;
     })

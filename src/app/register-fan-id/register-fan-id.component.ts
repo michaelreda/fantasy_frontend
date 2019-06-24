@@ -42,20 +42,28 @@ export class RegisterFanIDComponent implements OnInit {
     } else if (this.class == "0") {
       alert("Please enter your class.");
     } else {
-      let input = new FormData();
+      // let input = new FormData();
       // Add your values in here
-      input.append('firstName', this.firstName);
-      input.append('lastName',  this.lastName);
-      input.append('username',  this.username);
-      input.append('teamName',  this.teamName);
-      input.append('password',  this.password);
-      input.append('confirmPassword',  this.password2);
-      input.append('class',  this.class);
+      // input.append('firstName', this.firstName);
+      // input.append('lastName',  this.lastName);
+      // input.append('username',  this.username);
+      // input.append('teamName',  this.teamName);
+      // input.append('password',  this.password);
+      // input.append('confirmPassword',  this.password2);
+      // input.append('class',  this.class);
       // input.append('userImage',  this.userImage);
       this.http
         .post(
           "/signup",
-          input
+          {
+            firstName: this.firstName,
+            lastName: this.lastName,
+            username: this.username,
+            password: this.password,
+            confirmPassword: this.password2,
+            teamName: this.teamName,
+            class: this.class
+          }
         )
         .subscribe(data => {
           console.log(data);
