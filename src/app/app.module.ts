@@ -1,14 +1,8 @@
-import { LoaderInterceptor } from './utils/loaderInterceptor';
+import { JWTInterceptor } from './utils/interceptors/JWTInterceptor';
+import { HttpResponseToastInterceptor } from './utils/interceptors/httpResponseToastInterceptor';
+import { LayoutsModule } from './layouts/layouts.module';
+import { LoaderInterceptor } from './utils/interceptors/loaderInterceptor';
 import { LoaderService } from './loader.service';
-import { HttpResponseToastInterceptor } from './utils/httpResponseToastInterceptor';
-import { UserService } from './user.service';
-import { DialogService } from './dialog.service';
-import { ObjectivesService } from './objectives.service';
-import { UserPlanService } from './user-plan.service';
-import { PlayersService } from './players.service';
-import { JWTInterceptor } from './utils/JWTInterceptor';
-import { AuthenticationService } from './authentication.service';
-import { BaseUrlInterceptor } from './utils/httpBaseUrlInterceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -22,106 +16,50 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
-import {PanelModule} from 'primeng/panel';
-import {CardModule} from 'primeng/card';
-import {TableModule} from 'primeng/table';
-import {FieldsetModule} from 'primeng/fieldset';
-import {CheckboxModule} from 'primeng/checkbox';
-import {TooltipModule} from 'primeng/tooltip';
-import {DropdownModule} from 'primeng/dropdown';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
-import {InputMaskModule} from 'primeng/inputmask';
 import {ToastModule} from 'primeng/toast';
-import {MenubarModule} from 'primeng/menubar';
-import {ProgressBarModule} from 'primeng/progressbar';
-
-
 import { AppComponent } from './app.component';
-import { RegisterFanIDComponent } from './register-fan-id/register-fan-id.component';
-import { LandingComponent } from './landing/landing.component';
-import { HomeComponent } from './home/home.component';
 import { RoutesAuthenticationGuardService } from './routes-authentication-guard.service';
-import { PlayerInfoDialogComponent } from './player-info-dialog/player-info-dialog.component';
-import { PlanComponent } from './plan/plan.component';
-import { PlayersTableComponent } from './players-table/players-table.component';
-import { PlayerCardComponent } from './player-card/player-card.component';
-import { ObjectivesComponent } from './objectives/objectives.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { RedeemCodeComponent } from './redeem-code/redeem-code.component';
 import { MessageService } from 'primeng/components/common/messageservice';
-import { PageHeaderComponent } from './page-header/page-header.component';
+import { AppRoutes } from './app.routes';
+import { BaseUrlInterceptor } from './utils/interceptors/httpBaseUrlInterceptor';
+import { DialogService } from './dialog.service';
+import { AuthenticationService } from './shared';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    RegisterFanIDComponent,
-    LandingComponent,
-    HomeComponent,
-    PlayerInfoDialogComponent,
-    PlanComponent,
-    PlayersTableComponent,
-    PlayerCardComponent,
-    ObjectivesComponent,
-    UserProfileComponent,
-    RedeemCodeComponent,
-    PageHeaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      {
-        path: '',
-        component: LandingComponent
-      },
-      {
-         path: 'registerFanId',
-         component: RegisterFanIDComponent
-      },
-      {
-        path: 'home',
-        component: HomeComponent,
-        canActivate: [RoutesAuthenticationGuardService]
-      }
-   ]),
-   DialogModule,
-   InputTextModule,
-   ButtonModule,
-   MessagesModule,
-   MessageModule,
-   PanelModule,
-   CardModule,
-   TableModule,
-   FieldsetModule,
-   CheckboxModule,
-   TooltipModule,
-   DropdownModule,
-   ConfirmDialogModule,
-   InputMaskModule,
-   ToastModule,
-   MenubarModule,
-   ProgressBarModule
+    RouterModule.forRoot(AppRoutes),
+    DialogModule,
+    InputTextModule,
+    ButtonModule,
+    ToastModule,
+    ConfirmDialogModule,
+    MessagesModule,
+    MessageModule,
+    LayoutsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpResponseToastInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-    AuthenticationService,
     RoutesAuthenticationGuardService,
-    PlayersService,
-    UserPlanService,
-    ObjectivesService,
+    LoaderService,
     ConfirmationService,
-    DialogService,
-    UserService,
     MessageService,
-    LoaderService
+    DialogService,
+    AuthenticationService
     ],
-  bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    exports:[]
 })
 export class AppModule { }
