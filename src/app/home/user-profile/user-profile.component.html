@@ -1,0 +1,12 @@
+<p-panel header="My profile" *ngIf="user && plan">
+  <div class="ui-g">
+      <span class="ui-g-12"><strong>Name:</strong> {{user.name}}</span>
+      <span class="ui-g-12"><strong>Username:</strong> {{user.username}}</span>
+      <span class="ui-g-12"><strong>Team name:</strong> {{user.teamName}}</span>
+      <br>
+      <span class="ui-g-12"><strong>Total points:</strong> {{user.points}}</span>
+      <span class="ui-g-12"><strong>Money:</strong> {{user.money}}$</span>
+      <span class="ui-g-12"><strong>Gameweek points:</strong> {{plan.points}}</span>
+  </div>
+  
+</p-panel>

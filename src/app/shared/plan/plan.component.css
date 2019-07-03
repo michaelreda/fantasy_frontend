@@ -1,0 +1,33 @@
+.pitch{
+    background-image: url("/assets/images/pitch.png");
+    background-color:#38003c;
+    height: 760px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.players{
+    width:60%;
+}
+
+.format{
+    background-color:#38003c;
+}
+
+
+@media (max-width:680px){
+    .plan-header-font-size{
+        font-size:12px!important;
+        line-height: 15px!important;
+    }
+    *>>>.ui-button.ui-button-text-only .ui-button-text{
+        padding: 3px 0px!important;
+    }
+    *>>>.ui-card-body{
+        padding: 0px!important;
+    }
+    .players{
+        width:100%!important;
+    }
+}

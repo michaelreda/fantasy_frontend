@@ -1,0 +1,10 @@
+<p-panel header="Redeem a code">
+    <div class="ui-g">
+      <div class="ui-g-8">
+        <p-inputMask [(ngModel)]="code" mask="999999" slotChar="*"></p-inputMask>
+      </div>
+      <div class="ui-g-4">
+          <p-button label="Redeem" (click)="redeemCode(code)" ></p-button>
+        </div>
+    </div>
+</p-panel>
