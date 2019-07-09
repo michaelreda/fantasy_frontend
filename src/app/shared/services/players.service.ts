@@ -65,4 +65,34 @@ export class PlayersService {
     //   })
     // );
   }
+
+  getPlayersChosenStats(className?){
+    let playersChosenStatsEndPoint = "/players_chosen_stats";
+    if(className)
+      playersChosenStatsEndPoint += "/"+className;
+    return this.http.get(playersChosenStatsEndPoint).pipe(
+      map(response => {
+        let playersData = {
+          labels: response["playersNames"],
+          datasets: [
+            {
+              label: "Number of times a player is chosen",
+              backgroundColor: "rgba(255,99,132,0.2)",
+              borderColor: "rgba(255,99,132,1)",
+              pointBackgroundColor: "rgba(255,99,132,1)",
+              pointBorderColor: "#fff",
+              pointHoverBackgroundColor: "#fff",
+              pointHoverBorderColor: "rgba(255,99,132,1)",
+              data: []
+            }
+          ]
+        };
+        let playersIds = Object.keys(response["playersCount"]);
+        for(var i=0;i<playersIds.length;i++){
+          playersData.datasets[0].data.push(response["playersCount"][playersIds[i]]);
+        }
+        return playersData;
+      })
+    );
+  }
 }

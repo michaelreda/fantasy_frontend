@@ -19,6 +19,7 @@ export const AppRoutes = [
       {
         path: 'admin',
         component: DefaultLayoutComponent,
+        canActivate: [RoutesAuthenticationGuardService],
         loadChildren: './admin/admin.module#AdminModule'
       }
 ]

@@ -22,6 +22,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { FormsModule } from '@angular/forms';
+import { CodeService } from './services/code.service';
+import {ChartModule} from 'primeng/chart';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { FormsModule } from '@angular/forms';
     AuthenticationService,
     PlayersService,
     UserPlanService,
-    UserService
+    UserService,
+    CodeService
   ],
   exports:[
     DialogModule,
@@ -59,6 +62,9 @@ import { FormsModule } from '@angular/forms';
     PlanComponent,
     TableModule,
     PanelModule,
+    CardModule,
+    ChartModule,
+    TooltipModule
   ]
 })
 export class SharedModule { }

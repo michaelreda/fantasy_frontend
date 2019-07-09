@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 // import { map } from 'rxjs/operators/map';
 import { Router } from '@angular/router';
@@ -7,7 +6,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthenticationService {
   private token: string;
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private router: Router) { }
 
   public saveToken(token: string): void {
     localStorage.setItem('mean-token', token);

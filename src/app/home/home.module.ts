@@ -2,7 +2,6 @@ import { RedeemCodeComponent } from './redeem-code/redeem-code.component';
 import { ObjectivesComponent } from './objectives/objectives.component';
 import { HomeRoutes } from './home.routes';
 import { RouterModule } from '@angular/router';
-import { InputMaskModule } from 'primeng/inputmask';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -20,7 +19,6 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
   ],
   imports: [
     CommonModule,
-    InputMaskModule,
     CheckboxModule,
     FieldsetModule,
     SharedModule,
