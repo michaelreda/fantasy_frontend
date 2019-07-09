@@ -1,5 +1,4 @@
-import { UserPlanService } from './../../shared';
-import { UserService } from './../../shared';
+import { UserPlanService, CodeService } from './../../shared';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,14 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class RedeemCodeComponent implements OnInit {
 
   code;
-  constructor(private userService: UserService, private userPlanService:UserPlanService) { }
+  constructor(private codeService:CodeService, private userPlanService:UserPlanService) { }
 
   ngOnInit() {
   }
 
   redeemCode(code){
     var comp = this;
-    var codeValue = this.userService.redeemCode(code, function(codeValue){
+    var codeValue = this.codeService.redeemCode(code, function(codeValue){
       comp.userPlanService.moneyRemainingSubject.next(comp.userPlanService.moneyRemainingSubject.getValue() + codeValue);
     });
     

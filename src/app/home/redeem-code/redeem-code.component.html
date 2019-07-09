@@ -1,10 +1,13 @@
 <p-panel header="Redeem a code">
     <div class="ui-g">
       <div class="ui-g-8">
-        <p-inputMask [(ngModel)]="code" mask="999999" slotChar="*"></p-inputMask>
+        <span class="ui-float-label">
+          <input id="code" type="text" size="30" [(ngModel)]="code" pInputText> 
+          <label for="code">Code</label>
+        </span>
       </div>
       <div class="ui-g-4">
           <p-button label="Redeem" (click)="redeemCode(code)" ></p-button>
-        </div>
+      </div>
     </div>
 </p-panel>
