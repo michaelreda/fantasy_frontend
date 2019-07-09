@@ -6,7 +6,7 @@ import { RoutesAuthenticationGuardService } from './routes-authentication-guard.
 import { RegisterFanIDComponent } from './landing/register-fan-id/register-fan-id.component';
 import { AdminRoutes } from './admin/admin.routes';
 import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
-import { Routes } from '@angular/router/src/config';
+import { Routes } from '@angular/router';
 
 // export function getLandingModule() { return LandingModule; }
 // export function getHomeModule() { return HomeModule; }
