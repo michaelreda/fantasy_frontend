@@ -16,21 +16,21 @@ export const AppRoutes: Routes = [
       {
         path: '',
         component: LandingLayoutComponent,
-        loadChildren: 'app/landing/landing.module#LandingModule',
+        loadChildren: './landing/landing.module#LandingModule',
         // loadChildren: getLandingModule
       },
       {
         path: 'home',
         component: DefaultLayoutComponent,
         canActivate: [RoutesAuthenticationGuardService],
-        loadChildren: 'app/home/home.module#HomeModule'
+        loadChildren: './home/home.module#HomeModule'
         // loadChildren: getHomeModule
       },
       {
         path: 'admin',
         component: DefaultLayoutComponent,
         canActivate: [RoutesAuthenticationGuardService],
-        loadChildren: 'app/admin/admin.module#AdminModule'
+        loadChildren: './admin/admin.module#AdminModule'
         // loadChildren: getAdminModule
       }
 ]
