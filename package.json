@@ -37,7 +37,7 @@
     "primeng": "^7.0.0",
     "rxjs": "^6.5.2",
     "tslib": "^1.9.0",
-    "typescript": "~3.1.1",
+    "typescript": "~3.4.1",
     "zone.js": "^0.8.1"
   },
   "devDependencies": {
