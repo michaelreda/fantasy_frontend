@@ -8,18 +8,18 @@ export const AppRoutes = [
       {
         path: '',
         component: LandingLayoutComponent,
-        loadChildren: './landing/landing.module#LandingModule',
+        loadChildren: 'src/app/landing/landing.module#LandingModule',
       },
       {
         path: 'home',
         component: DefaultLayoutComponent,
         canActivate: [RoutesAuthenticationGuardService],
-        loadChildren: './home/home.module#HomeModule'
+        loadChildren: 'src/app/home/home.module#HomeModule'
       },
       {
         path: 'admin',
         component: DefaultLayoutComponent,
         canActivate: [RoutesAuthenticationGuardService],
-        loadChildren: './admin/admin.module#AdminModule'
+        loadChildren: 'src/app/admin/admin.module#AdminModule'
       }
 ]
