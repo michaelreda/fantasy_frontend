@@ -1,0 +1,3 @@
+<p-panel header="Players">
+    <p-chart type="radar" *ngIf="(playersData$ | async) as playersData" [data]="playersData" height="350px"></p-chart>
+</p-panel>
