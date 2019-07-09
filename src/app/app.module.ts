@@ -22,10 +22,37 @@ import {ToastModule} from 'primeng/toast';
 import { AppComponent } from './app.component';
 import { RoutesAuthenticationGuardService } from './routes-authentication-guard.service';
 import { MessageService } from 'primeng/components/common/messageservice';
-import { AppRoutes } from './app.routes';
+// import { AppRoutes } from './app.routes';
 import { BaseUrlInterceptor } from './utils/interceptors/httpBaseUrlInterceptor';
 import { DialogService } from './dialog.service';
 import { AuthenticationService } from './shared';
+
+
+import { DefaultLayoutComponent } from './layouts';
+// import { RoutesAuthenticationGuardService } from './routes-authentication-guard.service';
+import { RegisterFanIDComponent } from './landing/register-fan-id/register-fan-id.component';
+import { AdminRoutes } from './admin/admin.routes';
+import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
+
+const AppRoutes = [
+      {
+        path: '',
+        component: LandingLayoutComponent,
+        loadChildren: 'app/landing/landing.module#LandingModule',
+      },
+      {
+        path: 'home',
+        component: DefaultLayoutComponent,
+        canActivate: [RoutesAuthenticationGuardService],
+        loadChildren: 'app/home/home.module#HomeModule'
+      },
+      {
+        path: 'admin',
+        component: DefaultLayoutComponent,
+        canActivate: [RoutesAuthenticationGuardService],
+        loadChildren: 'app/admin/admin.module#AdminModule'
+      }
+]
 
 
 @NgModule({
