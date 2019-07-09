@@ -1,0 +1,16 @@
+<p-panel header="Code Inspector">
+  <div class="ui-g">
+    <div class="ui-g-12" *ngIf="(result$ | async) as result">
+        <p-messages [value]="result | formatCodeInspectorResult"></p-messages>
+    </div>
+    <div class="ui-g-8">
+      <span class="ui-float-label">
+        <input id="code" type="text" size="30" [(ngModel)]="code" pInputText> 
+        <label for="code">Code</label>
+      </span>
+    </div>
+    <div class="ui-g-4">
+        <p-button label="Inspect" (click)="inspectCode(code)" ></p-button>
+    </div>
+  </div>
+</p-panel>
