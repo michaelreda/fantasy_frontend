@@ -1,0 +1,20 @@
+<div class="ui-g center">
+    <div class="ui-g-12" *ngIf="(usersCount$ | async) as usersCount">
+        <app-counter-card icon="fa fa-users" [count]="usersCount" text="users"></app-counter-card>
+        <app-counter-card icon="fa fa-money" [count]="totalMoney" text="M$"></app-counter-card>
+        <app-counter-card  [count]="totalPoints" text="points"></app-counter-card>
+        <app-counter-card  [count]="totalPoints/usersCount | number: '0.0-1'" text="average points"></app-counter-card>
+    </div>
+    <div class="ui-g-5">
+        <app-players-radar-chart></app-players-radar-chart>
+    </div>
+    <div class="ui-g-4">
+
+        </div>
+    <div class="ui-g-3">
+        <app-code-inspector></app-code-inspector>
+    </div>
+    <div class="ui-g-12">
+        <app-users-table></app-users-table>
+    </div>
+</div>
