@@ -1,0 +1,9 @@
+*>>> .ui-card{
+    min-width:300px;
+    text-align: center;
+    margin: 10px;
+    display: inline-block;
+}
+*>>> .ui-card h2{
+    margin-bottom: 0px;
+}
