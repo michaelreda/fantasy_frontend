@@ -29,6 +29,7 @@ export class UsersTableComponent implements OnInit {
   ]
   filterByCol =  { field: 'name', header: 'Name' };
   filterOperation = 'contains';
+  filterValue = '';
   @ViewChild("usersTable") usersTable;
   constructor(private usersService: UsersService) { 
     this.users$ = this.usersService.getUsers();
