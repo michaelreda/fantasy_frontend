@@ -1,0 +1,12 @@
+.ui-float-label>input{
+    float: left;
+}
+.ui-float-label>label{
+    margin-top: .5em;
+}
+.ui-float-label>input:focus ~ label{
+    margin-top: -.5em;
+}
+*>>> .ui-dropdown{
+    height: 100%;
+}

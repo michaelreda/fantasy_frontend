@@ -9,7 +9,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
-    "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -19,8 +18,5 @@
     ],
     "module": "es2015",
     "baseUrl": "./"
-  },
-  "angularCompilerOptions": {
-    "enableIvy": false
   }
 }

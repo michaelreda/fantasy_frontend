@@ -64,7 +64,8 @@ import {ChartModule} from 'primeng/chart';
     PanelModule,
     CardModule,
     ChartModule,
-    TooltipModule
+    TooltipModule,
+    DropdownModule
   ]
 })
 export class SharedModule { }

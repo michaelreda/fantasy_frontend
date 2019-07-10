@@ -1,5 +1,6 @@
 import { UsersService } from './../services/users.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SelectItem } from 'primeng/components/common/selectitem';
 
 @Component({
   selector: 'app-users-table',
@@ -11,11 +12,24 @@ export class UsersTableComponent implements OnInit {
   cols = [
     { field: 'name', header: 'Name' },
     { field: 'username', header: 'Username' },
-    { field: 'teamName', header: 'teamName' },
+    { field: 'teamName', header: 'Team name' },
     { field: 'class', header: 'Class' },
     { field: 'points', header: 'Points' },
     { field: 'money', header: 'Money' },
   ]
+  operations: SelectItem[] = [
+    { label: "contains", value:'contains'},
+    { label: "starts with", value:'startsWith'},
+    { label: "equals", value:'equals'},
+    { label: "not equals", value:'notEquals'},
+    { label: "less than", value:'lt'},
+    { label: "less than or equals", value:'lte'},
+    { label: "greater than", value:'gt'},
+    { label: "greater than or equals", value:'gte'},
+  ]
+  filterByCol =  { field: 'name', header: 'Name' };
+  filterOperation = 'contains';
+  @ViewChild("usersTable") usersTable;
   constructor(private usersService: UsersService) { 
     this.users$ = this.usersService.getUsers();
 
