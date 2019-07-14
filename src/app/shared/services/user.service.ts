@@ -20,7 +20,7 @@ export class UserService {
   getUser(){
     this.http.get("/user").subscribe(user=>{
       this._user = user;
-      this.userSubject.next(user)
+      this.userSubject.next(user);
     })
   }
 
@@ -34,16 +34,12 @@ export class UserService {
     this.userSubject.next(this._user);
   }
 
-  // redeemCode(code, cb){
-  //   this.http.post("/redeem_code",{"code":code}).subscribe(res=>{
-  //     if(res["newUserPoints"]){
-  //       this._user.points = res["newUserPoints"];
-  //       this._user.money = res["newUserMoney"];
-  //       this.userSubject.next(this._user);
-  //       cb(res["codeValue"]);
-  //     }
-  //   })
-    
-  // }
+  resetPassword(userId){
+    this.http.post('/reset_user_password',{"user_id":userId}).subscribe(res=>{});
+  }
+
+  changePassword(password){
+    return this.http.post('/change_password',{password:password});
+  }
 
 }

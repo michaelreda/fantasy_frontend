@@ -1,3 +1,4 @@
+import { UserService } from './../../shared';
 import { UsersService } from './../services/users.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SelectItem } from 'primeng/components/common/selectitem';
@@ -31,12 +32,16 @@ export class UsersTableComponent implements OnInit {
   filterOperation = 'contains';
   filterValue = '';
   @ViewChild("usersTable") usersTable;
-  constructor(private usersService: UsersService) { 
+  constructor(private usersService: UsersService, private userService:UserService) { 
     this.users$ = this.usersService.getUsers();
 
   }
 
   ngOnInit() {
+  }
+
+  resetPassword(userId){
+    this.userService.resetPassword(userId);
   }
 
 }

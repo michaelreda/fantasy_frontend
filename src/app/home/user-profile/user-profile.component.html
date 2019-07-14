@@ -10,3 +10,41 @@
   </div>
   
 </p-panel>
+
+<p-dialog
+      header="Change your password"
+      [(visible)]="showChangePasswordDialog"
+      draggable="false"
+      resizable="false"
+      modal="true"
+      [closable] = "false"
+      [style]="{'width':'300px','text-align':'center'}"
+    >
+      <p-messages [(value)]="changePasswordDialogErrors"></p-messages>
+      <div class="center">
+        <div class="ui-inputgroup">
+          <input
+            type="password"
+            pInputText
+            name="password"
+            [(ngModel)]="password"
+            placeholder="New Password"
+            style="width:100%"
+          />
+        </div>
+        <br />
+        <div class="ui-inputgroup">
+          <input
+            type="password"
+            pInputText
+            name="verifiedPassword"
+            [(ngModel)]="verifiedPassword"
+            placeholder="Your new password Again"
+            style="width:100%"
+          />
+        </div>
+        <br />
+
+        <p-button label="Change Password"  (click)="changePassword(password, verifiedPassword)"></p-button>
+      </div>
+</p-dialog>

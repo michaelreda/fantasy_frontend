@@ -1,4 +1,4 @@
-import { OnInit } from '@angular/core';
+import { OnInit, Input } from '@angular/core';
 import { UserPlanService } from './../../shared';
 import { Component } from '@angular/core';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
@@ -9,7 +9,8 @@ import { ConfirmationService } from 'primeng/components/common/confirmationservi
   styleUrls: ['./plan.component.css']
 })
 export class PlanComponent implements OnInit {
-
+  @Input('viewOnly') viewOnly;
+  @Input('viewUserId') viewUserId;
 
   moneyRemaining = undefined;
   countPlayersSelected = 0;

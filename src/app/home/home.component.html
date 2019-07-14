@@ -15,10 +15,10 @@
         <div class="ui-g-12">
           <objectives></objectives>
         </div>
-        <div class="ui-g-12">
+        <div class="ui-g-12" *ngIf="!viewOnly">
           <app-redeem-code></app-redeem-code>
         </div>
-        <div class="ui-g-12">
+        <div class="ui-g-12" *ngIf="!viewOnly">
           <p>Add players to your team:</p>
           <players-table></players-table>
         </div>
@@ -27,7 +27,7 @@
   
     <!-- left pane -->
     <div class="ui-g-8 ui-sm-12">
-      <app-plan></app-plan>
+      <app-plan [viewOnly]="viewOnly" [viewUserId]="viewUserId"></app-plan>
     </div>
   
     <!-- right pane-->
